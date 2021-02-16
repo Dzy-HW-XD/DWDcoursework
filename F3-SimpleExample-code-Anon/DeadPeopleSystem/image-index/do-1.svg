@@ -1,0 +1,8 @@
+<svg id="flower-2" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <path id="bound" d="M0,0H48V48H0Z" fill="none"/>
+  <circle id="Oval-32" cx="10" cy="10" r="10" transform="translate(20 24)" fill="#e4244b" opacity="0.5"/>
+  <circle id="Oval-32-Copy" cx="10" cy="10" r="10" transform="translate(8 24)" fill="#e4244b" opacity="0.5"/>
+  <circle id="Oval-32-Copy-2" cx="10" cy="10" r="10" transform="translate(4 12)" fill="#e4244b" opacity="0.5"/>
+  <circle id="Oval-32-Copy-3" cx="10" cy="10" r="10" transform="translate(24 12)" fill="#e4244b" opacity="0.5"/>
+  <circle id="Oval-32-Copy-4" cx="10" cy="10" r="10" transform="translate(14 4)" fill="#e4244b" opacity="0.5"/>
+</svg>

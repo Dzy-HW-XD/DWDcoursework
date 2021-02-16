@@ -10,17 +10,18 @@
             $("#find").click(function()
             {
                 $.ajax({
-                    url: "{{ @BASE }}/ui/dataView.html", async: true, success: function (data) {
-                        $("div.image1").hide();
-                        $("div.image2").hide();
-                        $("div.image3").hide();
+                    url: "{{ @BASE }}/ui/dataView", async: false, success: function (result) {
+                        $("div.homeimage").hide();
+                        $("div.homeimage").load(result);
+
+
                     }});
             });
             $("#adminlogin").click(function()
             {
-                $("div.image1").hide();
-                $("div.image2").hide();
-                $("div.image3").hide();
+                $("div.homeimage").hide();
+                $("div.homeimage").load("https://www.ziyudu.edinburgh.domains/fatfree/DeadPeopleSystem/ui/login.html");
+
             });
         });
 
@@ -90,6 +91,16 @@
         border-width: 2px;
         border-style: solid;
 
+
+        background-size: cover;
+        margin:0; /* If you want no margin */
+        padding:0; /*if your want to padding */
+
+        background-image:url('https://www.ziyudu.edinburgh.domains/fatfree/DeadPeopleSystem/image/001.gif');
+        background-size: cover;
+        margin:0; /* If you want no margin */
+        padding:0; /*if your want to padding */
+
         position: relative;
         left: 60px;
         top: 30px;
@@ -102,11 +113,17 @@
         border-width: 2px;
         border-style: solid;
 
+
+        background-image:url('https://www.ziyudu.edinburgh.domains/fatfree/DeadPeopleSystem/image/左侧下框.png');
+        background-size: 600px;
+        margin:0; /* If you want no margin */
+        padding:0; /*if your want to padding */
+
         position: relative;
         left: 60px;
         top: 40px;
         width: 600px;
-        height: 200px;
+        height: 300px;
     }
     .image3
     {
@@ -120,7 +137,8 @@
         width: 550px;
         height: 700px;
 
-        background-image:url('../image/右侧.png');
+        background-image:url('https://www.ziyudu.edinburgh.domains/fatfree/DeadPeopleSystem/image/右侧.png');
+        background-size: cover;
         margin:0; /* If you want no margin */
         padding:0; /*if your want to padding */
     }
@@ -132,14 +150,16 @@
         <a id="adminlogin">Administrator login</a>
         <a href="#">About Nameless Dead</a>
     </div>
-    <div class="image1">
-        information
-    </div>
-    <div class="image2">
-        information
-    </div>
-    <div class="image3" >
-        information
+    <div class="homeimage">
+        <div class="image1">
+            information
+        </div>
+        <div class="image2">
+            information
+        </div>
+        <div class="image3" >
+            information
+        </div>
     </div>
 </body>
 </html>

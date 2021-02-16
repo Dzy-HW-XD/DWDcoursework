@@ -1,0 +1,975 @@
+@import "css-tree";
+@import "variable";
+@import "functions";
+@import "default-css";
+@import "fonts";
+
+/** 
+ * -----------------
+ * General CSS
+ * -----------------
+ */
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+
+section {
+    overflow: hidden;
+}
+
+/*
+    ==============
+       Navigation
+    ============== 
+*/
+
+.mh-nav {
+    width: 100%;
+    padding: 10px 0;
+    @include transition(.3s);
+}
+.mh-header {
+    padding: 0;
+    background: $white;
+    @include transition(.3s);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    &.nav-strict {
+        padding: 0;
+        @include transition(.3s);
+        z-index: 9999;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        background:$white;
+        .mh-nav {
+            padding: 0px 0px;
+        }
+        .navbar-nav {
+            li {
+                a{
+                    color: $title-color;
+                }
+            }
+        }
+    }
+    .navbar-nav {
+        li {
+            margin: 16px 8px;
+            a {
+                font-family: "Louis-George-Cafe-Bold.ttf";
+                font-size: 16px;
+                line-height: 0.63;
+                color: $black;
+                padding: 0px 10px;
+            }
+        }   
+    }
+}
+.dropdown-toggle::after{
+    position: relative;
+    top: 1px;
+    left: 5px;
+}
+
+
+
+/*
+    ==============
+       home
+    ==============
+*/
+
+.resume-home{
+    // height: 100vh;
+    padding: 140px 0px;
+    
+    .resume-home-inner{
+        .span{
+            width: 55px;
+            height: 5px;
+            background-color: #ffb74f;
+            display: block;
+        }
+        h2{
+            font-size: 80px;
+            letter-spacing: -1.5px;
+            color: $black;    
+            margin-top: 25px;
+            margin-bottom: 30px;      
+        }
+        h4{
+            font-size: 30px;
+            letter-spacing: -0.75px;
+            color: $black;
+            span{
+                color:  $sm-small-color;
+            }
+        }
+    }
+    .resume-social{
+        margin-top: 40px;
+        h6{
+            font-size: 18px;
+            color: $black;
+            margin-bottom: 25px;
+        }
+        ul{
+            li{
+                display: inline-grid;
+                place-items: center;
+                width: 45px;
+                height: 45px;
+                border-radius: 3px;
+                border: solid 1px #cecece;
+                cursor: pointer;
+                transition: all .3s;
+                font-size: 20px;
+                margin-right: 5px;
+                font-family: "Louis-George-Cafe-Bold.ttf";
+                color: #000000;
+                &:hover{
+                    box-shadow: 0 16px 14px 0 rgba(0, 0, 0, 0.1);
+                    background-color: #ff4952;;
+                    border: solid 1px transparent;
+                    color: $white;
+                }
+            }
+        }
+    }
+    .resume-main{
+        padding: 170px 0px;
+        padding-bottom: 0px;
+        .main-inner{
+            .img-cover{
+                img{
+                    margin-left: 75px;
+                }
+            }
+            .bg-img{
+                position: absolute;
+                top: 110px;
+                z-index: -1;
+            }
+            .circle-bg{
+                position: absolute;
+                z-index: -2;
+                top: -15%;
+                left: -20%;
+            }
+        }
+        .resume-details{
+            padding: 160px 0px;
+            p{
+                opacity: 0.6;
+                font-size: 16px;
+                line-height: 1.88;
+                color: $black;
+                margin-bottom: 50px;
+            }
+        }
+    }
+    .shape-image{
+        position: absolute;
+        top: 9%;
+        left: -22%;
+    }
+}
+/*
+    ==============
+       What we do
+    ==============
+*/
+.resume-do{
+    .resume-do-inner{
+        padding-bottom: 50px;
+        p{
+            opacity: 0.6;
+            font-size: 16px;
+            line-height: 1.88;
+            color: $black;
+            margin-bottom: 55px;
+            max-width: 85%;
+        }
+        .resume-do-icon{
+            h5{
+                margin-top: 20px;
+                font-size: 25px;
+                letter-spacing: -0.63px;
+                color: $black;
+            }
+        }
+    }
+    .bg-title{
+        h1{
+            font-size: 130px;
+            line-height: 0.87;
+            letter-spacing: -6.47px;
+            color: #e0e0e0;
+        }
+    }
+}
+
+/*
+    ==============
+       Portfolio area
+    ==============
+*/
+
+.resume-portfolio{
+    padding: 100px 0px;
+    .resume-portfolio-inner{
+        padding: 80px 0px;
+        padding-bottom: 0px;
+        .resume-img{
+            .reveal-image{
+                opacity: 0;
+                transition: all 1s;
+            }
+            h5{
+                font-size: 25px;;
+                letter-spacing: -0.63px;
+                color: $black;
+                margin-bottom: 10px;
+            }
+            h6{
+                opacity: 0.4;
+                font-size: 18px;
+                line-height: 1.11;
+                letter-spacing: -0.25px;
+                color: $black;
+                margin-bottom: 35px;
+            }
+            .resume-btn-details{
+                transition: all .4s;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                display: grid;
+                place-items: center;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+                transform: translateY(30px);
+                .resume-btn{
+                    .btn-default{
+                        a{
+                            &.cta{
+                                &::before{
+                                    border: 1px solid rgba(255, 255, 255, .3);
+                                    border-right: 1px solid transparent;
+                                }
+                                span{
+                                    color: $white;
+                                }
+                                svg{
+                                    stroke: $white;
+                                }
+                                &:hover{
+                                    &::before{
+                                        border: 1px solid rgba(255, 73, 82, .6);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .resume-image-inner{
+                transition: all .4s;
+                position: absolute;
+                height: 100%;
+                width: 98%;
+                top: 0;
+                opacity: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                &::before{
+                    content: '';
+                    background-color: rgba(0, 0, 0, 0.6);
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    top: 0px;
+                    bottom: 0;
+                    right: 0;
+                    left: 0px;
+                    border-radius: 0px;
+                    transition: all .4s;
+                    pointer-events: none;
+                }
+            }
+            .image-one{
+                cursor: pointer;
+                &:hover{
+                    .resume-image-inner{
+                        opacity: 1;
+                    }
+                    .resume-btn-details{
+                        opacity: 1;
+                        transform: translateY(0px);
+                    }
+                }
+            }
+            .image-two{
+                cursor: pointer;
+                &:hover{
+                    .resume-image-inner{
+                        opacity: 1;
+                    }
+                    .resume-btn-details{
+                        opacity: 1;
+                        transform: translateY(0px);
+                    }
+                }
+            }            
+        }
+        &.inner-2{
+            padding: 80px 0px;
+            padding-top: 0px;
+            padding-bottom: 80px;
+        }
+    }
+}
+.mt_180{
+    margin-top: 180px;
+}
+
+/*
+    =====================
+       RESUME FEEDBACK AREA
+    =====================
+*/
+.resume-feedback{
+    padding: 120px 0px;
+    padding-top: 0px;
+    .pd_10{
+        // padding-left: 12%;
+        margin-bottom: 50px;
+    }
+    .advice_slider{
+        // padding-left: 12%;
+        .advice_c{
+            width: 545px;
+            border-radius: 8px;
+            // box-shadow: 0 66px 58px 0 rgba(99, 99, 99, 0.1);
+            // box-shadow: 0 40px 48px 0 rgba(99, 99, 99, 0.1);
+            // box-shadow: 0 40px 55px -14px rgba(99, 99, 99, 0.1);
+            box-shadow: 0 25px 40px -14px rgba(99, 99, 99, 0.1);
+            background-color: #ffffff;
+            margin-bottom: 100px;
+            margin-left: 0px;
+            border: 0px;
+            .card-body{
+                padding: 40px 35px 40px 35px;
+                .img{
+                    margin-bottom: 15px;
+                }
+            }
+            p{
+                font-family: "Louis-George-Cafe-Bold.ttf";
+                font-size: 18px;
+                line-height: 1.6;
+                color: #000000;
+                margin-bottom: 35px;
+            }
+            h5{
+                font-family: "Louis-George-Cafe-Bold.ttf";
+                font-size: 16px;
+                line-height: 1.25;
+                letter-spacing: -0.22px;
+                color: #000000;
+                margin-bottom: 6px;
+            }
+            h6{
+                opacity: 0.5;
+                font-family: "Louis-George-Cafe.ttf";
+                font-size: 16px;
+                line-height: 1.25;
+                letter-spacing: -0.22px;
+                color: #000000;              
+            }
+        }
+        .card_icon{
+            display: flex;
+            margin-bottom: 20px;
+            .card-icon-details{
+                margin-left: 15px;
+                ul{
+                    li{
+                        font-size: 20px;
+                        padding: 19px 0px;
+                        display: inline-block;
+                        color: #ffbb00;
+                    }
+                }
+            }
+        }
+        .owl-next{
+           width: 55px;
+           height: 55px;
+           position: absolute;
+           top: -25%;
+           right: 30px;
+           border: solid 2px transparent;
+           display: grid;
+           place-items: center;
+           font-size: 18px;
+           background: transparent;
+           color: $black;
+           transition: all .4s;
+           &:hover{
+               background: rgba(0, 0, 0, .0);
+               color: #08001f;
+           }
+       }
+       .owl-prev{
+           opacity: 0;
+           width: 55px;
+           height: 55px;
+           position: absolute;
+           top: -25%;
+           right: 90px;
+           border: solid 2px transparent;
+           display: grid;
+           place-items: center;
+           font-size: 18px;
+           background: transparent;
+           color: $black;
+           transition: all .4s;
+           &:hover{
+               background: rgba(0, 0, 0, .0);
+               color: #08001f;
+           }
+       }
+       .op_1{
+           opacity: 1 !important;
+       }
+    }
+    .resume-card-social{
+        // padding-left: 12%;
+        .main-social{
+            display: flex;
+            display: none;
+            .social-inner{
+                margin-right: 40px;
+            }
+        }
+        .social-inner{
+            display: flex;
+            .social-img{
+                width: 67px;
+                height: 67px;
+                border-radius: 50%;
+                color: $white;
+                display: grid;
+                place-items: center;
+                font-size: 30px;
+                box-shadow: 0 10px 37px -5px rgba(234, 76, 137, 0.5);
+                background-color: #ea4c89;
+                &.color-2{
+                    box-shadow: 0 10px 37px -5px rgba(0, 103, 255, 0.5);
+                    background-color: #0067ff;
+                }
+                &.color-3{
+                    box-shadow: 0 10px 37px -5px rgba(1, 119, 172, 0.5);
+                    background-color: #0177ac;
+                }
+            }
+            .social-details{
+                h5{
+                    font-family: "Louis-George-Cafe-Bold.ttf";
+                    font-size: 25px;
+                    letter-spacing: -0.63px;
+                    color: $black;
+                    padding: 18px 0px;
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+}
+/*
+    =====================
+       CONTACT US AREA
+    =====================
+*/
+
+.resume-contact{
+    padding: 80px 0px;
+    background-image: linear-gradient(307deg, rgba(246, 248, 252, 0.21), #f6f8fc);
+    .contact-details{
+        padding: 100px 0px;
+        h2{
+            font-size: 60px;
+            letter-spacing: -1.5px;
+            color: $black;
+        }
+        .contact-name{
+            padding-top: 40px;
+            h5{
+                font-size: 25px;
+                font-weight: 600;
+                letter-spacing: -0.63px;
+                color: $black;   
+                margin-bottom: 10px;       
+            }
+            p{
+                font-family: "Louis-George-Cafe-Bold.ttf";
+                opacity: 0.4;
+                font-size: 18px;
+                line-height: 1.41;
+                letter-spacing: 0.25px;
+                color: $black;
+                margin-bottom: 0px;
+            }
+        }
+    }
+    .resume-form{
+        padding: 65px 90px;
+        box-shadow: 0 66px 58px 0 rgba(99, 99, 99, 0.1);
+        background-color: $white;   
+        text-align: center;
+        .form-group{
+            margin-bottom: 40px;
+            .contact-name{
+                font-family: "Louis-George-Cafe-Bold.ttf";
+                font-size: 18px;
+                font-weight: bold;
+                color: #232426;
+                height: 52px;
+                border: 0px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+                border-radius: 0px;
+                padding: 0px;
+            }
+            .contact-message{
+                font-family: "Louis-George-Cafe-Bold.ttf";
+                font-size: 18px;
+                font-weight: bold;
+                color: #232426;
+                border: 0px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+                border-radius: 0px;
+                padding: 0px;
+            }
+        }
+        .resume-btn{
+            margin: 0 auto;
+            margin-top: 30px;
+            text-align: center;
+            display: inline-flex;
+            cursor: pointer;
+        }   
+    }
+}
+
+// DEFAULT USES TITLE FOR ALL SECTION
+
+.resume-title{
+    h5{
+        font-size: 20px;
+        line-height: 2.25;
+        color: $sm-small-color;
+        margin-bottom: 10px;
+    }
+    h1{
+        font-size: 60px;
+        letter-spacing: -1.5px;
+        color: $black;
+        margin-bottom: 20px;
+      
+    }
+}
+//DEFAULT ANIMATION CSS
+.btn-sss{
+    color: $white;
+    position: relative;
+    margin: 0 auto;
+    font-family: "Louis-George-Cafe-Bold.ttf";
+    &::after{
+        content: attr(data-text);
+        position: absolute;
+        left: 2px;
+        text-shadow: -1px 0 red;
+        top: 0;
+        color: $black;
+        background: transparent;
+        overflow: hidden;
+        clip: rect(0,900px,0,0);
+        animation: noise-anim 2s infinite linear alternate-reverse;
+    }
+    &::before{
+        content: attr(data-text);
+        position: absolute;
+        left: 2px;
+        text-shadow: -1px 0 #2e2e4e;
+        top: 0;
+        color: $black;
+        background: transparent;
+        overflow: hidden;
+        clip: rect(0,900px,0,0);
+        animation: noise-anim-2 3s infinite linear alternate-reverse;
+    }
+}
+
+@keyframes noise-anim{
+    $steps:20;
+    @for $i from 0 through $steps {
+        #{percentage($i*(1/$steps))}{
+            clip: rect(random(100)+px,9999px,random(100)+px,0)
+        }
+    }
+}
+@keyframes noise-anim-2{
+    $steps:20;
+    @for $i from 0 through $steps {
+        #{percentage($i*(1/$steps))}{
+            clip: rect(random(100)+px,9999px,random(100)+px,0)
+        }
+    }
+}
+
+//DEFAULT BUTTON FOR ALL SECTION AND PAGES
+
+//default button
+.btn-default{
+    a {
+        text-decoration: none;
+        color: inherit;
+        font-family: "Louis-George-Cafe-Bold.ttf";
+        &.cta{
+            position: relative;
+            margin: auto;
+            padding: 19px 22px;
+            transition: all 0.2s ease;
+            &:hover{
+                &::before{
+                    width: 108%;
+                    background: #ff4952;
+                }
+                span{
+                    color: $white;
+                }
+                svg{
+                    transform: translateX(0);
+                    stroke: $white;
+                }
+            }
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -10px;
+                display: block;
+                border-radius: 30px;
+                background: rgba(255, 73, 82, .0);
+                border: 1px solid rgba(255, 73, 82, .6);
+                border-right: 1px solid transparent;
+                width: 60px;
+                height: 60px;
+                transition: all 0.3s ease;
+            }
+            span{
+                position: relative;
+                font-size: 18px;
+                line-height: 0.56;
+                font-weight: 900;
+                vertical-align: middle;
+                color: $black;
+            }
+            svg{
+                position: relative;
+                top: 4px;
+                margin-left: 10px;
+                fill: none;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke: $black;
+                stroke-width: 2;
+                transform: translateX(-5px);
+                transition: all 0.3s ease;
+            }
+            &:active{
+                transform: scale(0.96);
+            }
+        }
+      }
+}
+
+/*
+    ==============
+       Slider area
+    ==============
+*/
+
+.res-slider{
+    margin-top: 80px;
+    .slider-inner{
+        img{
+            padding-right: 100px;
+        }
+        // .last_img{
+        //     padding-right: 0px !important;
+        // }
+    }
+}
+/*
+    =================
+       Portfolio area
+    =================
+*/
+
+/*
+    ==============
+       Contact area
+    ==============
+*/
+
+.Custom_contact{
+    .form-control{
+        border: 0px;
+        border-radius: 0px;
+        font-size: 16px;
+        color: #071634;
+        height: 48px;
+        border-bottom: 1px solid rgba(10, 31, 72, 0.15);
+        margin-top: 30px;
+    }
+    textarea{
+        height: auto !important;
+    }
+    p{
+        opacity: 0.6;
+        font-size: 16px;
+        line-height: 1.88;
+        letter-spacing: normal;
+        color: #071634;
+        margin-top: 40px;
+    }
+}
+.form-control:focus{
+    outline: none !important;
+    border-bottom: 1px solid rgba(10, 31, 72, 0.15);
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+
+
+//reveal animation
+
+.reveal{
+    position: relative;
+    width: 98%;
+    opacity: 1 !important;
+    transition: opacity 1s;
+    &::before{
+        content: '';
+        background: $white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: scaleX(0);
+        transform-origin: 0% 0% 0px;
+        animation: reveal 1s 0s ease-in-out forwards;
+        z-index: 99;
+    }
+    &::after{
+        content: '';
+        background: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: scaleX(0);
+        transform-origin: 0% 0% 0px;
+        animation: reveal 1s .5s ease-in-out forwards;
+        z-index: 99;    
+    }
+}
+
+@keyframes reveal {
+    0%{
+        transform: scaleX(0);
+    }
+    50%{
+        transform: scaleX(1);
+        transform-origin: 0% 0% 0px;
+    }
+    51%{
+        transform-origin: 100% 50% 0px;
+    }
+    100%{
+        transform: scaleX(0);
+        transform-origin: 100% 50% 0px;
+    }
+}
+
+
+
+
+
+/*
+===========================
+        ABOUT US PAGE
+===========================
+*/
+
+
+//About myself
+.res-about{
+    padding: 150px 0px;
+    padding-bottom: 80px;
+    .res-about-img{
+        position: relative;
+    }
+    .res-about-img-inner{
+        position: absolute;
+        width: 155px;
+        height: 155px;
+        background: $black;
+        bottom: 20px;
+        left: -60px;
+        display: grid;
+        place-items: center;
+        .inner-projects{
+            position: relative;
+            p{
+                text-transform: uppercase;
+                color: $white;
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+            h3{
+                color: $white;
+                font-size: 36px;
+            }
+        }
+    }
+    .res-about-inner{
+        padding: 75px 0px;
+        position: relative;
+        h5{
+            font-size: 20px;
+            line-height: 2.25;
+            color: $black;
+            margin-bottom: 10px;
+        }
+        h1{
+            font-size: 60px;
+            letter-spacing: -1.5px;
+            color: $black;
+            margin-bottom: 20px;
+          
+        }
+        p{
+            opacity: 0.6;
+            font-size: 16px;
+            line-height: 1.88;
+            color: $black;
+            margin-bottom: 50px;
+            max-width: 95%;
+        }
+    }
+}
+
+//res about title
+
+.res-about-title{
+    padding: 100px 0px;
+    .heading-title{
+        color: $black;
+        font-size: 120px;
+        white-space: nowrap;
+        margin-bottom: 70px;
+        margin-top: -50px;
+        opacity: .5;
+    }
+    .ab-title-inner{
+        // text-align: center;
+        .ab-title-icon{
+            position: relative;
+            .icon-inner{
+                width: 85px;
+                height: 85px;
+                margin-bottom: 34px;
+            }
+            span{
+                font-family: "Louis-George-Cafe-Bold.ttf";
+                position: absolute;
+                font-size: 110px;
+                color: rgba(255, 255, 255, .07);
+                top: 15px;
+                left: 25%;
+            }
+        }
+        h4{
+            color: $black;
+            font-size: 25px;
+            letter-spacing: -0.63px;
+            margin-bottom: 14px;
+        }
+        p{
+            opacity: 0.6;
+            font-size: 18px;
+            color: $black;
+            max-width: 75%;
+            line-height: 1.7;
+            letter-spacing: -0.25px;
+        }
+    }
+}
+
+//resume full width title
+
+.full_width {
+    margin-bottom: 50px;
+    .resume-full-overlay{
+        padding: 120px 0px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.4);
+        .full-title-inner{
+            h1{
+                font-size: 60px;
+                color: $white;
+                margin-bottom: 40px;
+            }
+            .resume-btn{
+                .btn-default{
+                    a{
+                        &.cta{
+                            &::before{
+                                border: 1px solid rgba(255, 255, 255, .3);
+                                border-right: 1px solid transparent;
+                            }
+                            span{
+                                color: $white;
+                            }
+                            svg{
+                                stroke: $white;
+                            }
+                            &:hover{
+                                &::before{
+                                    border: 1px solid rgba(255, 73, 82, .6);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+

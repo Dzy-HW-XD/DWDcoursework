@@ -1,0 +1,23 @@
+<h2>Please Enter Information:</h2>
+<form id="form1" name="form1" method="post" action="{{ @BASE }}/simpleform">
+  Please enter dead body name:
+  <input name="name" type="text" placeholder="Enter name" id="name" size="25" />
+  <p>Choose body's gender:
+    <select name="gender" id="gender">
+      <option value="male">Male</option>
+      <option value="female" selected="selected">Female</option>
+    </select>
+  </p>
+  Please enter age:
+  <input name="age" type="number" placeholder="Pleas Enter Number" id="age"  />
+  <br>
+  Please enter the discovery site:
+  <input name="dis_site" type="text" placeholder="Enter Discovery Site" id="dis_site" size="25" />
+  <br>
+  Please enter description information:
+  <input name="description" type="text" placeholder="Enter Description" id="description" size="50" />
+  <br>
+<p>
+  <input type="submit" name="Submit" value="Submit" />
+</p>
+</form>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script type="text/javascript" src="https://www.ziyudu.edinburgh.domains/fatfree/DeadPeopleSystem/js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $("#find").click(function()
+            {
+                $.ajax({
+                    url: "{{ @BASE }}/ui/dataView.html", async: true, success: function (data) {
+                        $("div.image1").hide();
+                        $("div.image2").hide();
+                        $("div.image3").hide();
+                        $("div.image1").load(data);
+                    }});
+            });
+            $("#adminlogin").click(function()
+            {
+                $("div.image1").hide();
+                $("div.image2").hide();
+                $("div.image3").hide();
+                $("div.image1").load("{{ @BASE }}/ui/login.html");
+            });
+        });
+
+    </script>
+</head>
+<style type="text/css">
+    html,body
+    {
+        width: 1440px;
+        height: 900px;
+        border-color: black;
+        border-width: 2px;
+        border-style: solid;
+        margin: 0px;
+    }
+    body
+    {
+
+    }
+    .navbar a
+    {
+        float: right;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 40px 20px;
+        text-decoration: none;
+    }
+
+    .navbar
+    {
+        border-color: black;
+        border-width: 2px;
+        border-style: solid;
+
+        overflow: hidden;
+        background-color: bisque;
+        font-size: 25px;
+        font-family: "微软雅黑";
+        font-weight: bold;
+    }
+    .navbar button.left
+    {
+        padding:20px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        width: 200px;
+        font-size: 40px;
+        border-radius: 8px;
+        background-color: white;
+        font-weight: bold;
+
+        margin-top: 10px;
+        margin-left: 100px;
+    }
+    .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+        font-size: 25px;
+        font-family: "微软雅黑";
+        font-weight: bold;
+    }
+    .image1
+    {
+        border-color: black;
+        border-width: 2px;
+        border-style: solid;
+
+        position: relative;
+        left: 60px;
+        top: 30px;
+        width: 600px;
+        height: 450px;
+    }
+    .image2
+    {
+        border-color: black;
+        border-width: 2px;
+        border-style: solid;
+
+        position: relative;
+        left: 60px;
+        top: 40px;
+        width: 600px;
+        height: 200px;
+    }
+    .image3
+    {
+        border-color: black;
+        border-width: 2px;
+        border-style: solid;
+
+        position: absolute;
+        left: 800px;
+        top: 155px;
+        width: 550px;
+        height: 700px;
+    }
+</style>
+<body>
+    <div class="navbar">
+        <button  class="left" id="find">Find</button>
+        <a href="#">Contact Us</a>
+        <a id="adminlogin">Administrator login</a>
+        <a href="#">About Nameless Dead</a>
+    </div>
+    <div class="image1">
+        information
+    </div>
+    <div class="image2">
+        information
+    </div>
+    <div class="image3">
+        information
+    </div>
+</body>
+</html>

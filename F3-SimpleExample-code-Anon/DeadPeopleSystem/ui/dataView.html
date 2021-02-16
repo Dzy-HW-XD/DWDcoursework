@@ -1,0 +1,19 @@
+<h2>Dead People Information List:</h2>
+
+<table>
+	<tr>
+		<th>Name|</th><th>Gender|</th><th>Age|</th><th>Discovery Site|</th><th>Description</th>
+	</tr>
+	<repeat group="{{ @dbData }}" value="{{ @record }}">
+		<tr>
+			<td>{{ trim(@record.name) }}</td>
+			<td>{{ trim(@record.gender) }}</td>
+			<td>{{ trim(@record.age) }}</td>
+			<td>{{ trim(@record.dis_site) }}</td>
+			<td>{{ trim(@record.description) }}</td>
+		</tr>
+	</repeat>
+</table>
+
+<p><a href="{{ @BASE }}/simpleform">Add another record</a></p>
+<p><a href="{{ @BASE }}/editView">Delete records</a></p>

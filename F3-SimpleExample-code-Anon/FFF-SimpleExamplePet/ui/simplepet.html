@@ -1,0 +1,13 @@
+<p>This is {{ @SESSION.userName }}'s simple virtual pet</p>
+<form id="form1" name="form1" method="post" action="{{ @BASE }}/simplepet">
+<p>
+  {{ @petMessage | raw }}
+  <!-- The point of "| raw" is to allow bare HTML (the emoji code) to pass through without being sanitised.
+       See https://fatfreeframework.com/3.7/views-and-templates#DataSanitation for explanation.
+  -->
+</p>
+
+<p>
+  <input type="submit" name="Submit" value="Feed pet" />
+</p>
+</form>

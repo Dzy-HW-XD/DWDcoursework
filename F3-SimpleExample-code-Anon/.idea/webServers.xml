@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="882659cd-a328-4572-9c55-2e7d18e06480" name="edinburghdomains" url="http://ziyudu.edinburgh.domains">
+        <fileTransfer rootFolder="/home/ziyudued" accessType="SFTP" host="ziyudu.edinburgh.domains" port="22" sshConfigId="efe72339-88ea-4965-91d8-c9826bac0da0" sshConfig="edinburghdomains">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

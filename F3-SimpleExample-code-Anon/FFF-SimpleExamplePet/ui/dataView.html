@@ -1,0 +1,16 @@
+<h2>Current DB listing:</h2>
+
+<table>
+	<tr>
+		<th>Name</th><th>Colour</th>
+	</tr>
+	<repeat group="{{ @dbData }}" value="{{ @record }}">
+		<tr>
+			<td>{{ trim(@record.name) }}</td>
+			<td>{{ trim(@record.colour) }}</td>
+		</tr>
+	</repeat>
+</table>
+
+<p><a href="{{ @BASE }}/simpleform">Add another record</a></p>
+<p><a href="{{ @BASE }}/editView">Delete records</a></p>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="edinburghdomains" filePermissions="420" folderPermissions="493" remoteFilesAllowedToDisappearOnAutoupload="false" autoUploadExternalChanges="true">
+    <serverData>
+      <paths name="edinburghdomains">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/AboveWebRoot" local="$PROJECT_DIR$/AboveWebRoot" web="" />
+            <mapping deploy="/public_html/fatfree/F3-SimpleExample" local="$PROJECT_DIR$/F3-SimpleExample" web="/fatfree/F3-SimpleExample" />
+            <mapping deploy="/public_html/fatfree/FFF-SimpleExamplePet" local="$PROJECT_DIR$/FFF-SimpleExamplePet" web="/fatfree/FFF-SimpleExamplePet" />
+            <mapping deploy="/public_html/fatfree/DeadPeopleSystem" local="$PROJECT_DIR$/DeadPeopleSystem" web="/fatfree/DeadPeopleSystem" />
+            <mapping deploy="/public_html/fatfree/FFF-SimpleExampleAJAX" local="$PROJECT_DIR$/FFF-SimpleExampleAJAX" web="/fatfree/FFF-SimpleExampleAJAX" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

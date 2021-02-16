@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>{{ @html_title }}</title>
+      <meta charset="utf-8" />
+   </head>
+   <body>
+
+<!-- 
+Check if the session username is UNSET; if not, give user's name and logout button, then show page content.
+If it is UNSET, check if this is login page, in which case show content; 
+but if not login page, say "Not logged in" and give login link.
+ -->
+   	  <check if="{{ @SESSION.userName=='UNSET' }}">
+		  <false>
+			  <span class="loggedin"> Logged in as {{ @SESSION.userName }}.
+			  <form method=post action="{{ @BASE }}/logout">
+				<input type="submit" name="submit" value="Logout">
+			  </form>
+			  </span>
+			  <hr />
+			  <include href="{{ @content }}" />
+		  </false>
+		  <true>
+		  	  <check if="{{ @thisIsLoginPage }}">
+				  <true>
+					  <include href="{{ @content }}" />
+				  </true>
+				  <false>
+					  <span class="loggedin"> Not logged in.</span>
+					  <br /><a href="{{ @BASE }}/login/in">Log in</a>
+				  </false>
+			  </check>
+		  </true>
+	  </check>
+      
+   </body>
+</html>

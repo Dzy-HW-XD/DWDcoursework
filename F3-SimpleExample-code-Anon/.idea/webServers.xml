@@ -2,8 +2,15 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="882659cd-a328-4572-9c55-2e7d18e06480" name="edinburghdomains" url="http://ziyudu.edinburgh.domains">
+      <webServer id="882659cd-a328-4572-9c55-2e7d18e06480" name="edinburghdomains" url="ziyudu.edinburgh.domains">
         <fileTransfer rootFolder="/home/ziyudued" accessType="SFTP" host="ziyudu.edinburgh.domains" port="22" sshConfigId="efe72339-88ea-4965-91d8-c9826bac0da0" sshConfig="edinburghdomains">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="3028e666-c965-4855-ab99-aad495dacfd7" name="lukecao" url="http://lukecao.edinburgh.domains">
+        <fileTransfer rootFolder="/home/lukecaoe" accessType="SFTP" host="lukecao.edinburgh.domains" port="22" sshConfigId="b892a174-789a-4f67-a664-58a4c5d29458" sshConfig="lukecaoe@lukecao.edinburgh.domains:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

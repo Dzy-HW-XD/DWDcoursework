@@ -5,6 +5,7 @@
       <sshConfig authType="PASSWORD" host="ziyudu.edinburgh.domains" id="efe72339-88ea-4965-91d8-c9826bac0da0" port="22" customName="edinburghdomains" nameFormat="CUSTOM" username="ziyudued">
         <option name="customName" value="edinburghdomains" />
       </sshConfig>
+      <sshConfig authType="PASSWORD" host="lukecao.edinburgh.domains" id="b892a174-789a-4f67-a664-58a4c5d29458" port="22" nameFormat="DESCRIPTIVE" username="lukecaoe" />
     </configs>
   </component>
 </project>

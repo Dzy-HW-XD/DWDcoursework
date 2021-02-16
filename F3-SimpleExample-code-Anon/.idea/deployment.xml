@@ -13,6 +13,14 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="lukecao">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/AboveWebRoot" local="$PROJECT_DIR$/AboveWebRoot" web="/" />
+            <mapping deploy="/public_html/fatfree/DeadPeopleSystem" local="$PROJECT_DIR$/DeadPeopleSystem" web="/fatfree/DeadPeopleSystem" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
     <option name="myAutoUpload" value="ALWAYS" />
   </component>

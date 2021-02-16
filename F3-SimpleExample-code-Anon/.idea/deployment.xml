@@ -6,8 +6,6 @@
         <serverdata>
           <mappings>
             <mapping deploy="/AboveWebRoot" local="$PROJECT_DIR$/AboveWebRoot" web="" />
-            <mapping deploy="/public_html/fatfree/F3-SimpleExample" local="$PROJECT_DIR$/F3-SimpleExample" web="/fatfree/F3-SimpleExample" />
-            <mapping deploy="/public_html/fatfree/FFF-SimpleExamplePet" local="$PROJECT_DIR$/FFF-SimpleExamplePet" web="/fatfree/FFF-SimpleExamplePet" />
             <mapping deploy="/public_html/fatfree/DeadPeopleSystem" local="$PROJECT_DIR$/DeadPeopleSystem" web="/fatfree/DeadPeopleSystem" />
             <mapping deploy="/public_html/fatfree/FFF-SimpleExampleAJAX" local="$PROJECT_DIR$/FFF-SimpleExampleAJAX" web="/fatfree/FFF-SimpleExampleAJAX" />
           </mappings>

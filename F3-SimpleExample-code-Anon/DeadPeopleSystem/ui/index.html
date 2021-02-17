@@ -20,22 +20,21 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <link rel="stylesheet" href="{{ @icofont }}">
+    <link rel="stylesheet" href="icofont/icofont.min.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ @bootstrap }}">
+    <link rel="stylesheet" href="plugins/css/bootstrap.min.css">
     <!-- Owl Carousel CSS-->
-    <link rel="stylesheet" href="{{ @owl }}">
+    <link rel="stylesheet" href="plugins/css/owl.css">
     <!-- Fancybox-->
-    <link rel="stylesheet" href="{{ @fancybox }}">
+    <link rel="stylesheet" href="plugins/css/jquery.fancybox.min.css">
     <!-- Anime CSS-->
-    <link rel="stylesheet" href="{{ @revealer }}">
-    <!-- Aos CSS-->        
-.    <!-- Animate CSS-->
-    <link rel="stylesheet" href="{{ @animate }}">
+    <link rel="stylesheet" href="plugins/css/revealer.css">
+    <!-- Aos CSS-->
+    <link rel="stylesheet" href="plugins/css/aos.css">
+    <!-- Animate CSS-->
+    <link rel="stylesheet" href="plugins/css/animate.css">
     <!-- Custom CSS-->
-    <link rel="stylesheet" href="{{@index_style}}">
-    <!-- Responsive -->
-    <link rel="stylesheet" href="{{ @index_responsive }}">
+    <link rel="stylesheet" href="css/styles.css">
     
 </head>
 <body class="black-bg body-2" >
@@ -49,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <nav class="navbar navbar-expand-lg mh-nav nav-btn">
-                    <a class="navbar-brand" href="index.html"><img src="images-index/logo.svg" alt="" class="img-fluid"></a>
+                    <a class="navbar-brand" href="{{ @BASE }}/index"><img src="images-index/logo.svg" alt="" class="img-fluid"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon icon">
@@ -62,7 +61,7 @@
                                 <a class="nav-link" href="about-us.html">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#service">Services</a>
+                                <a class="nav-link " href="{{ @BASE }}/search">Services</a>
                             </li>
                             <li class="nav-item"> 
                                 <a class="nav-link" href="#portfolio">Portfolio</a>
@@ -84,7 +83,7 @@
         HOME 
     ==============
     -->
-    <section class="section relative ev-home resume-home" id="about" style="background: url(assets/images/bg-home.svg) no-repeat scroll center center">                  
+    <section class="section relative ev-home resume-home" id="about" style="background: url(images-index/bg-home.svg) no-repeat scroll center center">
         <div class="container zindex">
             <div class="section-separator">
                 <div class="row">
@@ -202,7 +201,7 @@
         PORTFOLIO AREA 
     ====================
     -->    
-    <section class="resume-portfolio relative" style="background: url(assets/images/orange-bg.svg) no-repeat scroll; background-position-x: 150%; background-position-y: 80%;" id="portfolio">
+    <section class="resume-portfolio relative" style="background: url(images-index/orange-bg.svg) no-repeat scroll; background-position-x: 150%; background-position-y: 80%;" id="portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

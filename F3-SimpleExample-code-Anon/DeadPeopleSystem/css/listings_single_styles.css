@@ -688,20 +688,20 @@ section
 }
 .search_box
 {
-	width: 100%;
+	width: 60%;
 	height: auto;
 	z-index: 10;
 }
 .search_box_content
 {
-	width: 600px;
+	width: 60%;
 	height: auto;
 	background: #0e1d41;
 	padding-bottom: 81px;
 }
 .search_box_inner
 {
-	width: 100%;
+	width: 60%;
 	
 	padding-bottom: 25px;
 }
@@ -753,12 +753,12 @@ section
 
 .search_form
 {
-	width: 100%;
+	width: 60%;
 	margin-top: 32px;
 }
 .search_box_container
 {
-	width: 100%;
+	width: 60%;
 	padding-left: 30px;
 	padding-right: 30px;
 }
@@ -808,7 +808,7 @@ section
 	-webkit-padding-end: 34px;
 	-webkit-padding-start: 15px;
 	-webkit-user-select: none;
-	background-image: url(../images/dropdown_arrow.png);
+	background-image: url(images/dropdown_arrow.png);
 	background-position: center right;
 	background-repeat: no-repeat;
 	border: solid 1px #FFFFFF;

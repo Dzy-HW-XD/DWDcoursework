@@ -53,9 +53,9 @@ $f3->route('GET /search',
     function ($f3) {
         $f3->set('html_title','Home Page');
         $f3->set('content','search.html');
-        $f3->set('single_responsive','./css/listings_single_responsive.css');
-        $f3->set('listings_responsive','./css/listings_responsive.css');
-        $f3->set('single_styles','./css/listings_single_styles.css');
+        $f3->set('single_responsive','css/listings_single_responsive.css');
+        $f3->set('listings_responsive','css/listings_responsive.css');
+        $f3->set('single_styles','css/listings_single_styles.css');
         echo Template::instance()->render('search.html');
     }
 );
@@ -63,7 +63,9 @@ $f3->route('GET /search',
 $f3->route('GET /index',
     function ($f3) {
         $f3->set('html_title','Home Page');
-        $f3->set('content','search.html');
+        $f3->set('content','index.html');
+
+
         $f3->set('icofont','./icofont/icofont.min.css');
         $f3->set('bootstrap','./plugins/css/bootstrap.min.css');
         $f3->set('owl','./plugins/css/owl.css');
@@ -74,6 +76,21 @@ $f3->route('GET /index',
         $f3->set('index_responsive','./css/responsive.css');
 
         echo Template::instance()->render('index.html');
+    }
+);
+$f3->route('GET /search',
+    function($f3) {
+        $f3->set('html_title','Serach Page');
+        $f3->set('content','search.html');
+        $f3->set('icofont','./icofont/icofont.min.css');
+        $f3->set('bootstrap','./plugins/css/bootstrap.min.css');
+        $f3->set('owl','./plugins/css/owl.css');
+        $f3->set('fancybox','./plugins/css/jquery.fancybox.min.css');
+        $f3->set('revealer','./plugins/css/revealer.css');
+        $f3->set('animate','./plugins/css/animate.css');
+        $f3->set('index_style','./css/styles.css');
+        $f3->set('index_responsive','./css/responsive.css');
+        echo template::instance()->render('search.html');
     }
 );
 

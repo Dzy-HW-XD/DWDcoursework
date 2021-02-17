@@ -26,8 +26,6 @@
 
     <link rel="stylesheet" href="plugins/css/autooptimizar.css">
 
-    <!--<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">-->
-
 </head>
 
 <body>
@@ -36,7 +34,7 @@
     <div class="container">
         <div class="row">
             <nav class="navbar navbar-expand-lg mh-nav nav-btn">
-                <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="" class="img-fluid"></a>
+                <a class="navbar-brand" href="{{ @BASE }}/index"><img src="images-index/logo.svg" alt="" class="img-fluid"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon icon">
@@ -49,7 +47,7 @@
                             <a class="nav-link" href="about-us.html">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#service">Services</a>
+                            <a class="nav-link " href="{{ @BASE }}/search">Services</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#portfolio">Portfolio</a>
@@ -298,15 +296,6 @@
             <li class="additional_detail"><span>floors:</span> Raised Foundation, Vinyl Tile, Wall-to-Wall Carpet, Wood</li>
         </ul>
     </div>
-
-    <div class="listing_video">
-        <div class="listing_subtitle">Property Video</div>
-        <div class="listing_video_link">
-            <a class="video" href="https://vimeo.com/99340873" title=""><img src="images/listing_video.jpg" alt="https://www.pexels.com/u/binyaminmellish/"></a>
-            <div class="video_play"><img src="images/play.svg" alt=""></div>
-        </div>
-    </div>
-
     <div class="listing_map">
         <div class="listing_subtitle">Property on map</div>
         <div id="google_map">

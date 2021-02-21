@@ -47,7 +47,7 @@
         <div class="container">
             <div class="row">
                 <nav class="navbar navbar-expand-lg mh-nav nav-btn">
-                    <a class="navbar-brand" href="{{ @BASE }}/index"><img src="images-index/logo.svg" alt="" class="img-fluid"></a>
+                    <a class="navbar-brand" href="{{ @BASE }}/index"><img src="../images-index/logo.svg" alt="" class="img-fluid"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon icon">
@@ -55,10 +55,7 @@
                         </span>
                     </button>                    
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-0 ml-auto">                       
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ @BASE }}/index">Upload</a>
-                            </li>
+                        <ul class="navbar-nav mr-0 ml-auto">
                             <li class="nav-item">
                                 <a class="nav-link " href="{{ @BASE }}/search">Search</a>
                             </li> 
@@ -67,7 +64,10 @@
                             </li>                                                            
                             <li class="nav-item">
                                 <a class="nav-link" href="#Contact">Login</a>
-                            </li>                
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ @BASE }}/index-register">Register</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -79,7 +79,7 @@
         HOME 
     ==============
     -->
-    <section class="section relative ev-home resume-home" id="about" style="background: url(images-index/bg-home.svg) no-repeat scroll center center">
+    <section class="section relative ev-home resume-home" id="about" style="background: url(../images-index/bg-home.svg) no-repeat scroll center center">
         <div class="container zindex">
             <div class="section-separator">
                 <div class="row">
@@ -218,28 +218,17 @@
                     </div>
                 </div>
                 <div class="col-md-6 ml-auto wow fadeInUp">
-                    <div class="resume-form">
+                    <form method="post" class="resume-form">
                         <div class="form-group">
                             <input type="text" name="Username" placeholder="Username" class="form-control contact-name">
                         </div>
                         <div class="form-group">
-                            <input type="Password" name="Password" placeholder="Password" class="form-control contact-name">
-                        </div>  
+                            <input type="password" name="Password" placeholder="Password" class="form-control contact-name">
+                        </div>
                         <div class="form-group">
-                            <textarea placeholder="Message"  rows="6" class="form-control contact-message"></textarea>
-                        </div>                                                
-                        <div class="resume-btn">
-                            <div class="btn-default">
-                                <a href="#" class="cta">
-                                    <span>Log in</span>
-                                    <svg width="13px" height="10px" viewBox="0 0 13 10">
-                                        <path d="M1,5 L11,5"></path>
-                                        <polyline points="8 1 12 5 8 9"></polyline>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>                        
-                    </div>
+                            <input type="submit" name="Submit" value="Login"/>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

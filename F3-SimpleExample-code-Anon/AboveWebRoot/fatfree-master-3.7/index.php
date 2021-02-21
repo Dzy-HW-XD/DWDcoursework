@@ -1,4 +1,4 @@
-<?php
+<x></x><?php
 
 // Kickstart the framework
 $f3=require('lib/base.php');

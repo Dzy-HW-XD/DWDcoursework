@@ -48,7 +48,68 @@ $f3->route('GET /home',
         echo Template::instance()->render('home.html');
     }
 );
+$f3->route('POST /index',
+    function($f3) {
+        $controller = new SimpleController;
+        if ($controller->loginUser($f3->get('POST.Username'), $f3->get('POST.Password'))) {		// user is recognised
+            $f3->set('SESSION.userName', $f3->get('POST.Username'));			// note that this is a global that will be available elsewhere
+//		$f3->set('html_title','Simple Virtual Pet');
+//		$f3->set('content','simplepet.html');							// will always go to simplepet after successful login
+//		echo template::instance()->render('layout.html');
+            header("location:/fatfree/DeadPeopleSystem/index-user");                  // will always go to simplepet after successful login
+        }
+        else{
+            echo "<script type='text/javascript'>alert('ERROR password or username')</script>";	// return to login page with the message that there was an error in the credentials
+            $f3->reroute('/index');
+        }
+            		// return to login page with the message that there was an error in the credentials
 
+    }
+);
+$f3->route('GET /index-user',
+    function ($f3) {
+        echo Template::instance()->render('index_user.html');
+    }
+);
+$f3->route('GET /index-register',
+    function ($f3) {
+        echo Template::instance()->render('index_register.html');
+    }
+);
+$f3->route('POST /index-register',
+    function($f3) {
+        $controller = new SimpleController;
+        $Adminfo = $controller->getAdminfo();
+            if($f3->get('POST.checkpolicy')){
+                if($f3->get('POST.password1')==$f3->get('POST.password2')){
+                    $formdata = array();			// array to pass on the entered data in
+                    $formdata["username"] = $f3->get('POST.Username');			// whatever was called "name" on the form
+                    $formdata["password"] = $f3->get('POST.password1');// whatever was called "colour" on the for
+
+                    $controller = new SimpleController;
+
+                    $controller->putIntoAdmDatabase($formdata);
+
+                    $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
+
+                    echo template::instance()->render('index_regsuccess.html');
+                }
+                else{
+                    echo "<script type='text/javascript'>alert('Empty or Unmatch password')</script>";
+                    $f3->reroute('/index-register');
+                }
+            }
+            else {
+                echo "<script type='text/javascript'>alert('Please check Service and Privacy Policy.')</script>";
+                $f3->reroute('/index-register');
+            }
+    }
+);
+$f3->route('GET /index-regsuccess',
+    function ($f3) {
+        echo Template::instance()->render('index_regsuccess.html');
+    }
+);
 $f3->route('GET /search',
     function ($f3) {
         $f3->set('html_title','Home Page');
@@ -64,8 +125,6 @@ $f3->route('GET /index',
     function ($f3) {
         $f3->set('html_title','Home Page');
         $f3->set('content','index.html');
-
-
         $f3->set('icofont','./icofont/icofont.min.css');
         $f3->set('bootstrap','./plugins/css/bootstrap.min.css');
         $f3->set('owl','./plugins/css/owl.css');
@@ -74,6 +133,7 @@ $f3->route('GET /index',
         $f3->set('animate','./plugins/css/animate.css');
         $f3->set('index_style','./css/styles.css');
         $f3->set('index_responsive','./css/responsive.css');
+
 
         echo Template::instance()->render('index.html');
     }
@@ -159,6 +219,8 @@ $f3->route('POST /login',
     	$f3->reroute('/login/err');		// return to login page with the message that there was an error in the credentials
   }
 );
+
+
 
 $f3->route('POST /logout',
   function($f3) {
@@ -258,6 +320,10 @@ $f3->route('GET /simplepet',
 // All we need to do is call the SimpleController method that increments the pet's health.
 // So this is much simpler than the /simpleform POST rule.
 // Then afterwards we can go straight back to /simplepet
+
+
+
+
 $f3->route('POST /simplepet',
     function($f3) {
         $user = $f3->get('SESSION.userName');       // This should not be UNSET

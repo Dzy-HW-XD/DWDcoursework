@@ -29,7 +29,11 @@ class SimpleController {
 		$this->loginMapper->password = $data["password"];				// set value for "colour" field
 		$this->loginMapper->save();									// save new record with these fields
 	}
-	
+
+	public function getAdminfo() {
+		$list = $this->loginMapper->find();
+		return $list;
+	}
 	public function getData() {
 		$list = $this->deadinfo->find();
 		return $list;

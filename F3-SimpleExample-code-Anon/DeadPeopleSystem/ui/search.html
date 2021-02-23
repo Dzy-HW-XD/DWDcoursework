@@ -159,9 +159,23 @@
 </div>
 
 <div class="col-lg-8 listings_col">
+
+<table>
+    <tr>
+        <th>Name|</th><th>age|</th><th>sex|</th><th>height|</th><th>tattoos|</th><th>birthmark|</th><th>timeofdeath|</th>
+    </tr>
     <repeat group="{{ @result }}" value="{{ @info }}">
-        <span>{{ @info.name  }}</span>
+        <tr>
+            <td>{{ trim(@info.name) }}</td>
+            <td>{{ trim(@info.age) }}</td>
+            <td>{{ trim(@info.sex) }}</td>
+            <td>{{ trim(@info.height) }}</td>
+            <td>{{ trim(@info.tattoos) }}</td>
+            <td>{{ trim(@info.birthmark) }}</td>
+            <td>{{ trim(@info.timeofdeath) }}</td>
+        </tr>
     </repeat>
+</table>
 </div>
 
 </body>

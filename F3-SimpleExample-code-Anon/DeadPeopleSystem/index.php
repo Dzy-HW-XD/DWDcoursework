@@ -127,12 +127,12 @@ $f3->route('POST /search',
         $formdata['height']=$f3->get('POST.height');
         $formdata['tattoos'] = $f3->get('POST.tattoos');
         $formdata['birthmark'] = $f3->get('POST.birthmark');
-        $formdata['timeofdeath'] = $f3->get('POST.timeofdeath');
+        $formdata['timeofdeadth'] = $f3->get('POST.timeofdeadth');
 
         $s = $formdata['sex'];
         $t = $formdata['tattoos'];
         $b = $formdata['birthmark'];
-        $tofdeadth = $formdata['timeofdeath'];
+        $tofdeadth = $formdata['timeofdeadth'];
         switch ($formdata['age'])
         {
             case "0～20":
@@ -168,7 +168,7 @@ $f3->route('POST /search',
                 break;
         }
 
-        $list = $f3->get('DB')->exec("SELECT * FROM deadinfo WHERE (age BETWEEN'$agelow'and'$agehigh') AND (sex='$s') AND (height BETWEEN'$heightlow'and'$heighthigh')  AND (tattoos='$t') AND (birthmark='$b') AND (timeofdeath='$tofdeadth')");
+        $list = $f3->get('DB')->exec("SELECT * FROM deadinfo WHERE (age BETWEEN'$agelow'and'$agehigh') AND (sex='$s') AND (height BETWEEN'$heightlow'and'$heighthigh')  AND (tattoos='$t') AND (birthmark='$b') AND (timeofdeadth='$tofdeadth')");
 
         $f3->set('result',$list);
         echo template::instance()->render('search.html');

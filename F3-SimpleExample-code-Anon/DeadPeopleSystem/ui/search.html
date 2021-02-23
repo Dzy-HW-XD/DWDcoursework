@@ -30,7 +30,16 @@
     <link rel="stylesheet" href="../css/styles.css">
 
     <!--link rel="stylesheet" href="plugins/css/autooptimizar.css"-->
+    <style>
+        .col-lg-4{
 
+        }
+        .col-lg-8{
+            position: absolute;
+            left: 500px;
+            top:100px;
+        }
+    </style>
 
 
 
@@ -79,95 +88,85 @@
                     <div class="search_box_title_icon d-flex flex-column align-items-center justify-content-center"><img src="images/search.png" alt=""></div>
                     <span>search your home</span> </div>
             </div>
-            <form class="search_form" method="post" action="{{@BASE}}/search">
+            <form class="search_form" method="post" action="{{ @BASE }}/search">
                 <div class="search_box_container">
                     <ul class="dropdown_row clearfix">
                         <li class="dropdown_item">
                             <div class="dropdown_item_title">Keywords</div>
-</li>
+                        </li>
                         <li class="dropdown_item">
                             <div class="dropdown_item_title">Sex</div>
-                            <select name="property_ID2" id="property_ID3" class="dropdown_item_select" name="sex">
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Any</option>
+                            <select  id="property_ID3" class="dropdown_item_select" name="sex">
+                                <option>male</option>
+                                <option>female</option>
                             </select>
                         </li>
                         <li class="dropdown_item">
                             <div class="dropdown_item_title">Age</div>
-                            <select name="property_status2" id="property_status3" class="dropdown_item_select" name="age">
-                                <option>0～10</option>
-                                <option>10～20</option>
-                                <option>30～40</option>
-								<option>50～60</option>
+                            <select  id="property_status3" class="dropdown_item_select" name="age">
+                                <option>0～20</option>
+                                <option>20～50</option>
+								<option>50～70</option>
 								<option>70+</option>
                             </select>
                         </li>
                         <li class="dropdown_item">
                             <div class="dropdown_item_title">Height</div>
-                            <select name="property_location2" id="property_location3" class="dropdown_item_select" name="height">
-                                <option>000～140cm</option>
-                                <option>140～160cm</option>
-                                <option>160~170cm</option>
-								<option>170~180cm</option>
-								<option>180~190cm</option>
+                            <select  id="property_location3" class="dropdown_item_select" name="height">
+                                <option>000～160cm</option>
+                                <option>160～190cm</option>
 								<option>190+cm</option>
                             </select>
                         </li>
                         <li class="dropdown_item">
                             <div class="dropdown_item_title">Time of death</div>
-                            <select name="property_type2" id="property_type3" class="dropdown_item_select" name="timeofdeadth">
-                                <option>Within a week</option>
-                                <option>Within two week</option>
-                                <option>Within a month</option>
-								<option>Within three months</option>
-								<option>Within half a year</option>
-								<option>Within three years</option>
-								<option>More than three years</option>
+                            <select  id="property_type3" class="dropdown_item_select" name="timeofdeadth">
+                                <option>within a week</option>
+                                <option>within two week</option>
+                                <option>within a month</option>
+								<option>within three months</option>
+								<option>within half a year</option>
+								<option>within three years</option>
+								<option>more than three years</option>
                             </select>
                         </li>
 
                         <li class="dropdown_item dropdown_item_half">
                             <div class="dropdown_item_title">Does the body have tattoos？</div>
-                            <select name="max_price2" id="max_price3" class="dropdown_item_select" name="tattoos">
-                                <option>Yes</option>
-                                <option>No</option>
-                                <option>Unknow</option>
+                            <select  id="max_price3" class="dropdown_item_select" name="tattoos">
+                                <option>yes</option>
+                                <option>no</option>
+                                <option>unknow</option>
                             </select>
                         </li>
                         <li class="dropdown_item dropdown_item_half">
                             <div class="dropdown_item_title">Does the body have birthmark？</div>
-                            <select name="min_sq_ft2" id="min_sq_ft3" class="dropdown_item_select" name="birthmark">
-                                <option>Yes</option>
-                                <option>No</option>
-                                <option>Unknow</option>
+                            <select  id="min_sq_ft3" class="dropdown_item_select" name="birthmark">
+                                <option>yes</option>
+                                <option>no</option>
+                                <option>unknow</option>
                             </select>
                         </li>
+                    </ul>
                     <div class="search_button">
                         <input value="search" type="submit" class="search_submit_button">
                     </div>
+                </div>
             </form>
         </div>
+
     </div>
 </div>
 
 <div class="col-lg-8 listings_col">
-
+    <repeat group="{{ @result }}" value="{{ @info }}">
+        <span>{{ @info.name  }}</span>
+    </repeat>
 </div>
 
 </body>
 
-<style>
-    .col-lg-4{
 
-    }
-    .col-lg-8{
-        position: absolute;
-        left: 500px;
-        top:100px;
-    }
-
-</style>
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../styles/bootstrap4/popper.js"></script>
 <script src="../styles/bootstrap4/bootstrap.min.js"></script>

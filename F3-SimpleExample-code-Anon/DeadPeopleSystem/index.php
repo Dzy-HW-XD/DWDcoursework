@@ -14,6 +14,8 @@ $f3 = require('../../../AboveWebRoot/fatfree-master-3.7/lib/base.php');
 $f3->set('AUTOLOAD','autoload/;../../../AboveWebRoot/autoload/');
 
 $db = DatabaseConnection::connect();		// defined as autoloaded class in AboveWebRoot/autoload/
+
+
 $f3->set('DB', $db);
 
 $f3->set('DEBUG',3);		// set maximum debug level
@@ -78,8 +80,6 @@ $f3->route('GET /index-register',
 );
 $f3->route('POST /index-register',
     function($f3) {
-        $controller = new SimpleController;
-        $Adminfo = $controller->getAdminfo();
             if($f3->get('POST.checkpolicy')){
                 if($f3->get('POST.password1')==$f3->get('POST.password2')){
                     $formdata = array();			// array to pass on the entered data in
@@ -114,11 +114,60 @@ $f3->route('GET /search',
     function ($f3) {
         $f3->set('html_title','Home Page');
         $f3->set('content','search.html');
-        $f3->set('single_responsive','css/listings_single_responsive.css');
-        $f3->set('listings_responsive','css/listings_responsive.css');
-        $f3->set('single_styles','css/listings_single_styles.css');
         echo Template::instance()->render('search.html');
     }
+);
+$f3->route('POST /search',
+    function($f3) {
+
+        $formdata = array();			// array to pass on the entered data in
+        $formdata["name"] = $f3->get('POST.name');			// whatever was called "name" on the form
+        $formdata["age"] = $f3->get('POST.age');// whatever was called "colour" on the for
+        $formdata['sex']=$f3->get('POST.sex');
+        $formdata['height']=$f3->get('POST.height');
+        $formdata['tattoos'] = $f3->get('POST.tattoos');
+        $formdata['birthmark'] = $f3->get('POST.birthmark');
+        $formdata['timeofdeath'] = $f3->get('POST.timeofdeath');
+        switch ($formdata['age'])
+        {
+            case "0～20":
+                $agelow = 0;
+                $agehigh = 20;
+                break;
+            case "20～50":
+                $agelow = 20;
+                $agehigh = 50;
+                break;
+            case "50～70":
+                $agelow = 50;
+                $agehigh = 70;
+                break;
+            case "70+":
+                $agelow = 70;
+                $agehigh = 100;
+                break;
+        }
+        switch ($formdata['height'])
+        {
+            case "000～160cm":
+                $heightlow = 0;
+                $heighthigh = 160;
+                break;
+            case "160～190cm":
+                $heightlow = 160;
+                $heighthigh = 190;
+                break;
+            case "190+cm":
+                $heightlow = 190;
+                $heighthigh = 220;
+                break;
+        }
+        $list = $f3->get('DB')->exec("SELECT * FROM deadinfo ORDER BY id DESC WHERE age>=$agelow AND age<=$agehigh");
+
+        $f3->set('result',$list);
+        echo template::instance()->render('search.html');
+    }
+
 );
 
 $f3->route('GET /index',
@@ -138,21 +187,7 @@ $f3->route('GET /index',
         echo Template::instance()->render('index.html');
     }
 );
-$f3->route('GET /search',
-    function($f3) {
-        $f3->set('html_title','Serach Page');
-        $f3->set('content','search.html');
-        $f3->set('icofont','./icofont/icofont.min.css');
-        $f3->set('bootstrap','./plugins/css/bootstrap.min.css');
-        $f3->set('owl','./plugins/css/owl.css');
-        $f3->set('fancybox','./plugins/css/jquery.fancybox.min.css');
-        $f3->set('revealer','./plugins/css/revealer.css');
-        $f3->set('animate','./plugins/css/animate.css');
-        $f3->set('index_style','./css/styles.css');
-        $f3->set('index_responsive','./css/responsive.css');
-        echo template::instance()->render('search.html');
-    }
-);
+
 
 $f3->route('GET /AdmRegister',
     function ($f3) {

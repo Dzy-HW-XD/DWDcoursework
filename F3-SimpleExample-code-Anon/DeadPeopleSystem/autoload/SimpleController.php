@@ -19,9 +19,11 @@ class SimpleController {
 	public function putIntoinfoDatabase($data) {
 		$this->deadinfo->name = $data["name"];					// set value for "name" field
 		$this->deadinfo->age = $data["age"];				// set value for "colour" field
-		$this->deadinfo->gender = $data["gender"];
-		$this->deadinfo->dis_site = $data["dis_site"];
-		$this->deadinfo->description = $data["description"];
+		$this->deadinfo->sex = $data["sex"];
+		$this->deadinfo->height = $data["height"];
+		$this->deadinfo->tatoos = $data["tatoos"];
+		$this->deadinfo->birthmark = $data["birthmark"];
+		$this->deadinfo->timeofdeath = $data["timeofdeath"];
 		$this->deadinfo->save();									// save new record with these fields
 	}
 	public function putIntoAdmDatabase($data) {
@@ -44,6 +46,7 @@ class SimpleController {
 		$this->deadinfo->erase();									// delete the DB record
 	}
 
+
 	public function loginUser($user, $pwd) {		// very simple login -- no use of encryption, hashing etc.
 		$auth = new \Auth($this->loginMapper, array('id'=>'username', 'pw'=>'password'));	// fields in table
 		return $auth->login($user, $pwd); 			// returns true on successful login
@@ -62,6 +65,8 @@ class SimpleController {
 		$this->petMapper->save();				// This will simply save the new value
 		// see https://fatfreeframework.com/3.7/databases#TheSmartSQLORM for explanation ...
 	}
+
+
 
 }
 

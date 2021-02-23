@@ -162,7 +162,7 @@ $f3->route('POST /search',
                 $heighthigh = 220;
                 break;
         }
-        $list = $f3->get('DB')->exec("SELECT * FROM deadinfo ORDER BY id DESC WHERE age>=$agelow AND age<=$agehigh");
+        $list = $f3->get('DB')->exec('SELECT * FROM deadinfo');
 
         $f3->set('result',$list);
         echo template::instance()->render('search.html');

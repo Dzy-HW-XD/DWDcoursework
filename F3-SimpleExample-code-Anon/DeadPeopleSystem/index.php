@@ -129,6 +129,7 @@ $f3->route('POST /search',
         $formdata['birthmark'] = $f3->get('POST.birthmark');
         $formdata['timeofdeath'] = $f3->get('POST.timeofdeath');
 
+        $s = $formdata['sex'];
         $h = $formdata['height'];
         $t = $formdata['tattoos'];
         $b = $formdata['birthmark'];
@@ -168,7 +169,7 @@ $f3->route('POST /search',
                 break;
         }
 
-        $list = $f3->get('DB')->exec("SELECT * FROM deadinfo WHERE (age BETWEEN'$agelow'and'$agehigh')");
+        $list = $f3->get('DB')->exec("SELECT * FROM deadinfo WHERE (age BETWEEN'$agelow'and'$agehigh') AND (sex='$s')");
 
         $f3->set('result',$list);
         echo template::instance()->render('search.html');

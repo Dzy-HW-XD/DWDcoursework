@@ -169,7 +169,7 @@ $f3->route('POST /search',
                 break;
         }
 
-        $list = $f3->get('DB')->exec("SELECT * FROM deadinfo WHERE (age BETWEEN'$agelow'and'$agehigh') AND (sex='$s') AND (height BETWEEN'$heightlow'and'$heighthigh') AND (height='$h') AND (tattoos='$t') AND (birthmark='$b') AND (timeofdeath='tofdeadth')");
+        $list = $f3->get('DB')->exec("SELECT * FROM deadinfo WHERE (age BETWEEN'$agelow'and'$agehigh') AND (sex='$s') AND (height BETWEEN'$heightlow'and'$heighthigh') AND (height='$h') AND (tattoos='$t') AND (birthmark='$b') AND (timeofdeath='$tofdeadth')");
 
         $f3->set('result',$list);
         echo template::instance()->render('search.html');

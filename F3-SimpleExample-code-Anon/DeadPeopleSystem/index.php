@@ -43,34 +43,31 @@ $f3->route('GET /',
   }
 );
 
-$f3->route('GET /home',
-    function ($f3) {
-        $f3->set('html_title','Home Page');
-        $f3->set('content','home.html');
-        echo Template::instance()->render('home.html');
-    }
-);
 $f3->route('POST /index',
     function($f3) {
         $controller = new SimpleController;
-        if ($controller->loginUser($f3->get('POST.Username'), $f3->get('POST.Password'))) {		// user is recognised
-            $f3->set('SESSION.userName', $f3->get('POST.Username'));			// note that this is a global that will be available elsewhere
-//		$f3->set('html_title','Simple Virtual Pet');
-//		$f3->set('content','simplepet.html');							// will always go to simplepet after successful login
-//		echo template::instance()->render('layout.html');
-            header("location:/fatfree/DeadPeopleSystem/index-user");                  // will always go to simplepet after successful login
+        if ($controller->loginUser($f3->get('POST.Username'), $f3->get('POST.Password'))) {	// user is recognised
+            $f3->set('SESSION.userName', $f3->get('POST.Username'));
+            // note that this is a global that will be available elsewhere
+            header("location:/fatfree/DeadPeopleSystem/index-user");
+            // will always go to index-user after successful login
         }
         else{
-            echo "<script type='text/javascript'>alert('ERROR password or username')</script>";	// return to login page with the message that there was an error in the credentials
-            $f3->reroute('/index');
+            echo "<script type='text/javascript'>alert('ERROR password or username')</script>";
+            // return to login page with the message that there was an error in the credentials
+            echo Template::instance()->render('index.html');
         }
-            		// return to login page with the message that there was an error in the credentials
-
     }
 );
 $f3->route('GET /index-user',
     function ($f3) {
         echo Template::instance()->render('index_user.html');
+    }
+);
+
+$f3->route('GET /user-search',
+    function ($f3) {
+        echo Template::instance()->render('index_usersearch.html');
     }
 );
 $f3->route('GET /index-register',
@@ -80,28 +77,32 @@ $f3->route('GET /index-register',
 );
 $f3->route('POST /index-register',
     function($f3) {
-            if($f3->get('POST.checkpolicy')){
-                if($f3->get('POST.password1')==$f3->get('POST.password2')){
-                    $formdata = array();			// array to pass on the entered data in
-                    $formdata["username"] = $f3->get('POST.Username');			// whatever was called "name" on the form
-                    $formdata["password"] = $f3->get('POST.password1');// whatever was called "colour" on the for
+            if($f3->get('POST.checkpolicy')){ // Check whether checkpolicy is true
+                if($f3->get('POST.password1')==$f3->get('POST.password2')){//Check whether pd1 and pd2 are same
+                    //if checkpolicy is true and pd1,pd2 are same
+                    //then insert Username and password into database
+                    $formdata = array();			                    // array to pass on the entered data in
+                    $formdata["username"] = $f3->get('POST.Username');	// whatever was called "Username" on the form
+                    $formdata["password"] = $f3->get('POST.password1');// whatever was called "password1" on the for
 
                     $controller = new SimpleController;
 
-                    $controller->putIntoAdmDatabase($formdata);
+                    $controller->putIntoAdmDatabase($formdata);//insert formadate into database
 
                     $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
 
                     echo template::instance()->render('index_regsuccess.html');
                 }
+                //if password1 and password2 are different, then alert and refresh page
                 else{
-                    echo "<script type='text/javascript'>alert('Empty or Unmatch password')</script>";
-                    $f3->reroute('/index-register');
+                    echo '<script type="text/javascript">alert("ERROR PASSWORD")</script>';
+                    echo template::instance()->render('index_register.html');
                 }
             }
+            //if checkpolicy is False, then alert and refresh page
             else {
-                echo "<script type='text/javascript'>alert('Please check Service and Privacy Policy.')</script>";
-                $f3->reroute('/index-register');
+                echo '<script type="text/javascript">alert("Please check Service and Privacy Policy.")</script>';
+                echo template::instance()->render('index_register.html');
             }
     }
 );
@@ -122,18 +123,19 @@ $f3->route('POST /search',
 
         $formdata = array();			// array to pass on the entered data in
         $formdata["name"] = $f3->get('POST.name');			// whatever was called "name" on the form
-        $formdata["age"] = $f3->get('POST.age');// whatever was called "colour" on the for
-        $formdata['sex']=$f3->get('POST.sex');
-        $formdata['height']=$f3->get('POST.height');
-        $formdata['tattoos'] = $f3->get('POST.tattoos');
-        $formdata['birthmark'] = $f3->get('POST.birthmark');
-        $formdata['timeofdeadth'] = $f3->get('POST.timeofdeadth');
+        $formdata["age"] = $f3->get('POST.age');            // whatever was called "age" on the form
+        $formdata['sex']=$f3->get('POST.sex');              // whatever was called "sex" on the form
+        $formdata['height']=$f3->get('POST.height');        // whatever was called "height" on the form
+        $formdata['tattoos'] = $f3->get('POST.tattoos');        // whatever was called "tattoos" on the form
+        $formdata['birthmark'] = $f3->get('POST.birthmark');    // whatever was called "birthmark" on the form
+        $formdata['timeofdeadth'] = $f3->get('POST.timeofdeadth');// whatever was called "timeofdeadth" on the form
 
         $s = $formdata['sex'];
         $t = $formdata['tattoos'];
         $b = $formdata['birthmark'];
         $tofdeadth = $formdata['timeofdeadth'];
-        switch ($formdata['age'])
+
+        switch ($formdata['age'])   //Initialize $agelow and $agehigh which will be used in sql query according to the condition $formdata['age']
         {
             case "0～20":
                 $agelow = 0;
@@ -152,7 +154,7 @@ $f3->route('POST /search',
                 $agehigh = 100;
                 break;
         }
-        switch ($formdata['height'])
+        switch ($formdata['height'])//Initialize $heightlow and $heighthigh which will be used in sql query according to the condition $formdata['height']
         {
             case "000～160cm":
                 $heightlow = 0;
@@ -167,11 +169,11 @@ $f3->route('POST /search',
                 $heighthigh = 220;
                 break;
         }
-
+        // execute SQL query using $f3->get('DB')->exec() function,constrained by variables $agelow,$agehigh,$heightlow,$heighthigh,$s,$t,$b
         $list = $f3->get('DB')->exec("SELECT * FROM deadinfo WHERE (age BETWEEN'$agelow'and'$agehigh') AND (sex='$s') AND (height BETWEEN'$heightlow'and'$heighthigh')  AND (tattoos='$t') AND (birthmark='$b') AND (timeofdeadth='$tofdeadth')");
 
-        $f3->set('result',$list);
-        echo template::instance()->render('search.html');
+        $f3->set('result',$list); //set $list into variable 'result'
+        echo template::instance()->render('search.html'); //return to search.html page
     }
 
 );
@@ -195,18 +197,6 @@ $f3->route('GET /index',
 );
 
 
-$f3->route('GET /AdmRegister',
-    function ($f3) {
-        $f3->set('html_title','Administrator Register');
-        $f3->set('content','AdmRegister.html');
-        echo Template::instance()->render('AdmRegister.html');
-    }
-);
-$f3->route('GET /UserView',
-    function ($f3) {
-        echo Template::instance()->render('UserView.html');
-    }
-);
 
 $f3->route('POST /AdmRegister',
     function($f3) {

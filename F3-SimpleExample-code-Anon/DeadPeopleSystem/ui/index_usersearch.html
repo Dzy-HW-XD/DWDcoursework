@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>search</title>
+    <title>User-Search</title>
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
     <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="styles/listings_styles.css">
@@ -36,7 +36,7 @@
         }
         .col-lg-8{
             position: absolute;
-            left: 700px;
+            left: 500px;
             top:100px;
         }
     </style>
@@ -60,19 +60,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-0 ml-auto">
+                        <li class="nav-item">Administrator {{@SESSION.userName}},Welcome</li>
                         <li class="nav-item">
+                            <a class="nav-link " href="{{ @BASE }}/index-user">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ @BASE }}/index">Home</a>
+                            <a class="nav-link" href="{{ @BASE }}/index-user#Clinett">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ @BASE }}/search">Search</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ @BASE }}/index#Contact">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ @BASE }}/index#Contact">Login</a>
+                            <a class="nav-link" href="{{ @BASE }}/index">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -88,7 +84,6 @@
                     <div class="search_box_title_icon d-flex flex-column align-items-center justify-content-center"><img src="images/search.png" alt=""></div>
                     <span>search your home</span> </div>
             </div>
-            <!-- search form -->
             <form class="search_form" method="post" action="{{ @BASE }}/search">
                 <div class="search_box_container">
                     <ul class="dropdown_row clearfix">
@@ -97,11 +92,6 @@
                         </li>
                         <li class="dropdown_item">
                             <div class="dropdown_item_title">Sex</div>
-                            <!--
-                            Search Condition:sex
-                            Whenever "sex" is called,
-                            corresponding constants in <option> will be load into backend
-                             -->
                             <select  id="property_ID3" class="dropdown_item_select" name="sex">
                                 <option>male</option>
                                 <option>female</option>
@@ -109,56 +99,36 @@
                         </li>
                         <li class="dropdown_item">
                             <div class="dropdown_item_title">Age</div>
-                            <!--
-                            Search Condition:age
-                            Whenever "age" is called,
-                            corresponding constants in <option> will be load into backend
-                             -->
                             <select  id="property_status3" class="dropdown_item_select" name="age">
                                 <option>0～20</option>
                                 <option>20～50</option>
-								<option>50～70</option>
-								<option>70+</option>
+                                <option>50～70</option>
+                                <option>70+</option>
                             </select>
                         </li>
                         <li class="dropdown_item">
                             <div class="dropdown_item_title">Height</div>
-                            <!--
-                            Search Condition:height
-                            Whenever "height" is called,
-                            corresponding constants in <option> will be load into backend
-                             -->
                             <select  id="property_location3" class="dropdown_item_select" name="height">
                                 <option>000～160cm</option>
                                 <option>160～190cm</option>
-								<option>190+cm</option>
+                                <option>190+cm</option>
                             </select>
                         </li>
                         <li class="dropdown_item">
                             <div class="dropdown_item_title">Time of death</div>
-                            <!--
-                            Search Condition:time of death
-                            Whenever "timeofdeadth" is called,
-                            corresponding constants in <option> will be load into backend
-                             -->
                             <select  id="property_type3" class="dropdown_item_select" name="timeofdeadth">
                                 <option>within a week</option>
                                 <option>within two week</option>
                                 <option>within a month</option>
-								<option>within three months</option>
-								<option>within half a year</option>
-								<option>within three years</option>
-								<option>more than three years</option>
+                                <option>within three months</option>
+                                <option>within half a year</option>
+                                <option>within three years</option>
+                                <option>more than three years</option>
                             </select>
                         </li>
 
                         <li class="dropdown_item dropdown_item_half">
                             <div class="dropdown_item_title">Does the body have tattoos？</div>
-                            <!--
-                            Search Condition:Does the body have tattoos？yes/no
-                            Whenever "tattoos" is called,
-                            corresponding constants in <option> will be load into backend
-                             -->
                             <select  id="max_price3" class="dropdown_item_select" name="tattoos">
                                 <option>yes</option>
                                 <option>no</option>
@@ -167,11 +137,6 @@
                         </li>
                         <li class="dropdown_item dropdown_item_half">
                             <div class="dropdown_item_title">Does the body have birthmark？</div>
-                            <!--
-                            Search Condition:Does the body have birthmark？yes/no
-                            Whenever "birthmark" is called,
-                            corresponding constants in <option> will be load into backend
-                             -->
                             <select  id="min_sq_ft3" class="dropdown_item_select" name="birthmark">
                                 <option>yes</option>
                                 <option>no</option>
@@ -179,11 +144,7 @@
                             </select>
                         </li>
                     </ul>
-
                     <div class="search_button">
-                        <!--
-                          Waiting for submit
-                         -->
                         <input value="search" type="submit" class="search_submit_button">
                     </div>
                 </div>
@@ -195,22 +156,22 @@
 
 <div class="col-lg-8 listings_col">
 
-<table border="1" width="700px">
-    <tr>
-        <th>Name</th><th>age</th><th>sex</th><th>height</th><th>tattoos</th><th>birthmark</th><th>timeofdeath</th>
-    </tr>
-    <repeat group="{{ @result }}" value="{{ @info }}">
+    <table border="1" width="500px">
         <tr>
-            <td>{{ trim(@info.name) }}</td>
-            <td>{{ trim(@info.age) }}</td>
-            <td>{{ trim(@info.sex) }}</td>
-            <td>{{ trim(@info.height) }}</td>
-            <td>{{ trim(@info.tattoos) }}</td>
-            <td>{{ trim(@info.birthmark) }}</td>
-            <td>{{ trim(@info.timeofdeadth) }}</td>
+            <th>Name</th><th>age</th><th>sex</th><th>height</th><th>tattoos</th><th>birthmark</th><th>timeofdeath</th>
         </tr>
-    </repeat>
-</table>
+        <repeat group="{{ @result }}" value="{{ @info }}">
+            <tr>
+                <td>{{ trim(@info.name) }}</td>
+                <td>{{ trim(@info.age) }}</td>
+                <td>{{ trim(@info.sex) }}</td>
+                <td>{{ trim(@info.height) }}</td>
+                <td>{{ trim(@info.tattoos) }}</td>
+                <td>{{ trim(@info.birthmark) }}</td>
+                <td>{{ trim(@info.timeofdeadth) }}</td>
+            </tr>
+        </repeat>
+    </table>
 </div>
 
 </body>

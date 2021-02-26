@@ -11,7 +11,7 @@ class SimpleController {
 	public function __construct() {
 		global $f3;						// needed for $f3->get() 
 		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"simpleModelP");	// create DB query mapper object// for the "simpleModel" table
-		$this->loginMapper = new DB\SQL\Mapper($f3->get('DB'), 'simpleUsers');		// mapper for login table
+		$this->loginMapper = new DB\SQL\Mapper($f3->get('DB'), 'simpleUsers');// mapper for login table
 		$this->petMapper = new DB\SQL\Mapper($f3->get('DB'),"simplePet");	// create DB query mapper object
 		$this->deadinfo = new DB\SQL\Mapper($f3->get('DB'),"deadinfo");//create DB query mapper object
 	}
@@ -27,8 +27,8 @@ class SimpleController {
 		$this->deadinfo->save();									// save new record with these fields
 	}
 	public function putIntoAdmDatabase($data) {
-		$this->loginMapper->username = $data["username"];					// set value for "name" field
-		$this->loginMapper->password = $data["password"];				// set value for "colour" field
+		$this->loginMapper->username = $data["username"];					// set value for "username" field
+		$this->loginMapper->password = $data["password"];				// set value for "password" field
 		$this->loginMapper->save();									// save new record with these fields
 	}
 

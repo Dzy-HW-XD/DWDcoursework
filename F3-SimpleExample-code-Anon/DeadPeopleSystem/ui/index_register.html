@@ -41,7 +41,7 @@
         }
 
 
-        #login-box{
+        #register-box{
             width: 30%;
             height: auto;
             /*border: 1px solid #000;  !*边框*!*/
@@ -53,19 +53,15 @@
 
         }
 
-        /*#login-box .form{*/
-        /*    margin-top: 50px;*/
-        /*}*/
 
-
-        #login-box .form .itme{
+        #register-box .form .itme{
             margin-top: 15px;
         }
-        #login-box h1{
+        #register-box h1{
             color: #ffffff;
         }
 
-        #login-box .form .itme input{
+        #register-box .form .itme input{
             width: 200px;
             font-size: 18px;
             border: 0;
@@ -75,7 +71,7 @@
             color: #fff;
         }
 
-        #login-box button{
+        #register-box button{
             margin-top: 15px;
             width: 180px;
             height: 30px;
@@ -87,7 +83,7 @@
             border-radius: 15px;
         }
 
-        #login-box .form .itme i{
+        #register-box .form .itme i{
             font-size: 18px;
             color: #fff;
         }
@@ -120,7 +116,7 @@
     <div class="container">
         <div class="row">
             <nav class="navbar navbar-expand-lg mh-nav nav-btn">
-                <a class="navbar-brand" href="{{ @BASE }}/index"><img src="images-index/logo.svg" alt="" class="img-fluid"></a>
+                <a class="navbar-brand" href="{{ @BASE }}/index"><img src="" alt="" class="img-fluid"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon icon">
@@ -149,7 +145,7 @@
     login in
 ==============
 -->
-<div id="login-box">
+<div id="register-box">
     <h1>Register </h1>
     <form method="post" action="{{ @BASE }}/index-register" class="form">
         <div class="itme">

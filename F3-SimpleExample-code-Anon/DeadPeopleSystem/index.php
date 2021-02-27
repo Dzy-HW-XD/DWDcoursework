@@ -67,6 +67,10 @@ $f3->route('GET /index-user',
 
 $f3->route('GET /user-search',
     function ($f3) {
+        $controller = new SimpleController;
+        $list = $controller->getData();
+
+        $f3->set('result',$list);
         echo Template::instance()->render('index_usersearch.html');
     }
 );
@@ -115,6 +119,10 @@ $f3->route('GET /search',
     function ($f3) {
         $f3->set('html_title','Home Page');
         $f3->set('content','search.html');
+        $controller = new SimpleController;
+        $list = $controller->getData();
+
+        $f3->set('result',$list);
         echo Template::instance()->render('search.html');
     }
 );

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User-Search</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="styles/listings_styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/listings_responsive.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+
+
+
+    <link rel="stylesheet" href="icofont/icofont.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="plugins/css/bootstrap.min.css">
+    <!-- Owl Carousel CSS-->
+    <link rel="stylesheet" href="plugins/css/owl.css">
+    <!-- Fancybox-->
+    <link rel="stylesheet" href="plugins/css/jquery.fancybox.min.css">
+    <!-- Anime CSS-->
+    <link rel="stylesheet" href="plugins/css/revealer.css">
+    <!-- Aos CSS-->
+    <link rel="stylesheet" href="plugins/css/aos.css">
+    <!-- Animate CSS-->
+    <link rel="stylesheet" href="plugins/css/animate.css">
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--link rel="stylesheet" href="plugins/css/autooptimizar.css"-->
+    <style>
+        .col-lg-4{
+
+        }
+        .col-lg-8{
+            position: absolute;
+            left: 500px;
+            top:100px;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+<header class="black-bg mh-header nav-scroll fixed-top mh-xss-mobile-nav" id="zb-header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg mh-nav nav-btn">
+                <a class="navbar-brand" href="{{ @BASE }}/index"><img src="images-index/logo.svg" alt="" class="img-fluid"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon icon">
+                            <i class="fa fa-bars"></i>
+                        </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-0 ml-auto">
+                        <li class="nav-item">Administrator {{@SESSION.userName}},Welcome</li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ @BASE }}/index-user">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ @BASE }}/index-user#Clinett">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ @BASE }}/index">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+<div class="col-lg-4 sidebar_col">
+    <div class="search_box">
+        <div class="search_box_content">
+            <div class="search_box_title text-center">
+                <div class="search_box_title_inner">
+                    <div class="search_box_title_icon d-flex flex-column align-items-center justify-content-center"><img src="images/search.png" alt=""></div>
+                    <span>search your home</span> </div>
+            </div>
+            <form class="search_form" method="post" action="{{ @BASE }}/search">
+                <div class="search_box_container">
+                    <ul class="dropdown_row clearfix">
+                        <li class="dropdown_item">
+                            <div class="dropdown_item_title">Keywords</div>
+                        </li>
+                        <li class="dropdown_item">
+                            <div class="dropdown_item_title">Sex</div>
+                            <select  id="property_ID3" class="dropdown_item_select" name="sex">
+                                <option>male</option>
+                                <option>female</option>
+                            </select>
+                        </li>
+                        <li class="dropdown_item">
+                            <div class="dropdown_item_title">Age</div>
+                            <select  id="property_status3" class="dropdown_item_select" name="age">
+                                <option>0～20</option>
+                                <option>20～50</option>
+                                <option>50～70</option>
+                                <option>70+</option>
+                            </select>
+                        </li>
+                        <li class="dropdown_item">
+                            <div class="dropdown_item_title">Height</div>
+                            <select  id="property_location3" class="dropdown_item_select" name="height">
+                                <option>000～160cm</option>
+                                <option>160～190cm</option>
+                                <option>190+cm</option>
+                            </select>
+                        </li>
+                        <li class="dropdown_item">
+                            <div class="dropdown_item_title">Time of death</div>
+                            <select  id="property_type3" class="dropdown_item_select" name="timeofdeadth">
+                                <option>within a week</option>
+                                <option>within two week</option>
+                                <option>within a month</option>
+                                <option>within three months</option>
+                                <option>within half a year</option>
+                                <option>within three years</option>
+                                <option>more than three years</option>
+                            </select>
+                        </li>
+
+                        <li class="dropdown_item dropdown_item_half">
+                            <div class="dropdown_item_title">Does the body have tattoos？</div>
+                            <select  id="max_price3" class="dropdown_item_select" name="tattoos">
+                                <option>yes</option>
+                                <option>no</option>
+                                <option>unknow</option>
+                            </select>
+                        </li>
+                        <li class="dropdown_item dropdown_item_half">
+                            <div class="dropdown_item_title">Does the body have birthmark？</div>
+                            <select  id="min_sq_ft3" class="dropdown_item_select" name="birthmark">
+                                <option>yes</option>
+                                <option>no</option>
+                                <option>unknow</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <div class="search_button">
+                        <input value="search" type="submit" class="search_submit_button">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-lg-8 listings_col">
+
+    <table border="1" width="500px">
+        <tr>
+            <th>Name</th><th>age</th><th>sex</th><th>height</th><th>tattoos</th><th>birthmark</th><th>timeofdeath</th>
+        </tr>
+        <repeat group="{{ @result }}" value="{{ @info }}">
+            <tr>
+                <td>{{ trim(@info.name) }}</td>
+                <td>{{ trim(@info.age) }}</td>
+                <td>{{ trim(@info.sex) }}</td>
+                <td>{{ trim(@info.height) }}</td>
+                <td>{{ trim(@info.tattoos) }}</td>
+                <td>{{ trim(@info.birthmark) }}</td>
+                <td>{{ trim(@info.timeofdeadth) }}</td>
+            </tr>
+        </repeat>
+    </table>
+</div>
+
+</body>
+
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="js/listings_custom.js"></script>
+
+</html>

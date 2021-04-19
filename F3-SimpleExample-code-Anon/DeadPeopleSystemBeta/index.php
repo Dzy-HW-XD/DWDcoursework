@@ -33,15 +33,39 @@ $f3->route('GET /',
   }
 );
 
-// When using GET, provide a form for the user to upload an image via the file input type
-$f3->route('GET /Search',
-  function($f3) {
-    $f3->set('html_title','Simple Input Form');
-    $f3->set('content','Search.html');
-    echo template::instance()->render('layout.html');
-  }
+$f3->route('GET /Home',
+    function ($f3) {
+        $f3->set('html_title','Simple Example Home');
+        $f3->set('content','Hello.html');
+        echo Template::instance()->render('layout.html');
+    }
 );
 
+
+$f3->route('POST /Home',
+    function($f3) {
+        $controller = new SimpleController;
+        if ($controller->loginUser($f3->get('POST.Username'), $f3->get('POST.Password'))) {	// user is recognised
+            $f3->set('SESSION.userName', $f3->get('POST.Username'));
+            // note that this is a global that will be available elsewhere
+            header("location:/fatfree/DeadPeopleSystemBeta/Upload");
+            // will always go to index-user after successful login
+        }
+        else{
+            header("location:/fatfree/DeadPeopleSystemBeta/Home");
+            echo "<script type='text/javascript'>alert('ERROR password or username')</script>";
+            // return to login page with the message that there was an error in the credentials
+        }
+    }
+);
+// When using GET, provide a form for the user to upload an image via the file input type
+$f3->route('GET /Search',
+    function($f3) {
+        $f3->set('html_title','Search Page');
+        $f3->set('content','Search.html');
+        echo template::instance()->render('layout.html');
+    }
+);
 // When using POST (e.g.  form is submitted), invoke the controller, which will process
 // any data then return info we want to display. We display
 // the info here via the response.html template
@@ -66,14 +90,21 @@ $f3->route('POST /simpleform',
 
 $f3->route('GET /Upload',
   function($f3) {
-
-    $f3->set('html_title','Viewing the data');
+    $f3->set('html_title','Upload Page');
     $f3->set('content','Upload.html');
     echo template::instance()->render('layout.html');
   }
 );
 
-$f3->route('GET /editView',				// exactly the same as dataView, apart from the template used
+$f3->route('GET /Signup',
+    function($f3) {
+        $f3->set('html_title','Sign Up Page');
+        $f3->set('content','Signup.html');
+        echo template::instance()->render('layout.html');
+    }
+);
+
+$f3->route('GET /editView',	// exactly the same as dataView, apart from the template used
   function($f3) {
   	$controller = new SimpleController;
     $alldata = $controller->getData();

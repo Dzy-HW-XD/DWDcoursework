@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/Hello.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+    <div id="header">
+        <div id="nav">
+            <img src="images/logo.png" id="nav-img" alt="logo">
+            <div id="nav-ul">
+                <ul>
+                    <li><a href="{{ @BASE }}/Home" style="font-weight: bold;">Hello</a><b></b></li>
+                    <li><a href="{{ @BASE }}/Search">Search</a></li>
+                    <li><a href="{{ @BASE }}/Upload">Upload</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <a id="nav-div" href="{{ @BASE }}/Home#Contact">login</a>
+            </div>
+    </div>
+    <div id="section2">
+        <div id="section2-box">
+            <video src="images/7.mp4"  autoplay loop muted></video>
+            <div id="login">
+                <div id="login-box">width="1280"
+                    <img src="images/logo.png" id="login-box-img" alt="logo">
+                    <span>BCD</span>
+                </div>
+
+                <div id="login-box2">
+                    <h1 style="font-weight: bold;">Log in</h1><br>
+                    <span>Enter your email and to login our dashboard</span>
+                </div>
+                <form action="Hello.html" onsubmit="return validate_form(this);" method="post">
+                    Email
+                    <br><input type="text" name="email" size="30">
+                    <br>password
+                    <br><input type="password" name="password" size="16">
+                    <br><button>Sign up</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

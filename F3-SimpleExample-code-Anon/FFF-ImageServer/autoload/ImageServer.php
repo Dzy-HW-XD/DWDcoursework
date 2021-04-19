@@ -79,7 +79,6 @@ class ImageServer {
 		$this->store();
 		$this->createThumbnail($this->filedata["name"], $f3->get("UPLOADS") . "/" .$this->thumbFile($this->filedata["name"]), basename($this->filedata["type"]));
 		$this->filedata["thumbNail"] = $this->thumbFile($this->filedata["name"]);		// add the thumbnail to filedata for later use
-
 		return $this->filedata;
 	}
 

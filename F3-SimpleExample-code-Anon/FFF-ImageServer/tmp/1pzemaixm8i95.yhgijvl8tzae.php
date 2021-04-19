@@ -1,4 +1,4 @@
-<h1>Uploaded</h1>
+    <h1>Uploaded</h1>
 <p>Thanks: your image is uploaded.</p>
 <p>Data:</p>
 <ul>

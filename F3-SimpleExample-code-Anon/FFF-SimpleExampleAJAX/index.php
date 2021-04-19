@@ -8,11 +8,10 @@
 // Create f3 object then set various global properties of it
 // These are available to the routing code below, but also to any 
 // classes defined in autoloaded definitions
-
 $f3 = require('../../../AboveWebRoot/fatfree-master-3.7/lib/base.php');
 
 // autoload Controller class(es) and anything hidden above web root, e.g. DB stuff
-$f3->set('AUTOLOAD','autoload/;../../../AboveWebRoot/autoload/');		
+$f3->set('AUTOLOAD','autoload/;../../../AboveWebRoot/autoload/');
 
 $db = DatabaseConnection::connect();		// defined as autoloaded class in AboveWebRoot/autoload/
 $f3->set('DB', $db);
@@ -77,7 +76,8 @@ $f3->route('GET /ajaxEx',
   function($f3) {
     $f3->set('html_title','Simple AJAX example');
     $f3->set('content','ajaxEx.html');
-    echo template::instance()->render('layout.html');
+
+    echo Template::instance()->render('ajaxEx.html');
   }
 );
 

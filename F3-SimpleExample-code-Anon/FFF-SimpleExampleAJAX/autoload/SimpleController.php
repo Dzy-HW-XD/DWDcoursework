@@ -8,7 +8,7 @@ class SimpleController {
 	
 	public function __construct() {
 		global $f3;						// needed for $f3->get() 
-		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"simpleModel");	// create DB query mapper object
+		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"simplemodel");	// create DB query mapper object
 																			// for the "simpleModel" table
 		$this->ajax_mapper = new DB\SQL\Mapper($f3->get('DB'),"jr_quahog");	// create DB query mapper object
 																			// for the "jr_quahog" table

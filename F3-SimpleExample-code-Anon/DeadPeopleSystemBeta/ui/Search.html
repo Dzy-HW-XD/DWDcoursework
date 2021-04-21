@@ -23,7 +23,7 @@
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
-            <a id="nav-div" href="{{ @BASE }}/Home/#Contact">login</a>
+            <a id="nav-div" href="{{ @BASE }}/Home#Contact">login</a>
             <script>
                 var i = 0;
                 var btn1 = document.getElementById("nav-div");
@@ -44,24 +44,43 @@
     </div>
 
     <div id="section">
-        <div id="section-box">
+        <form id="section-box" method="post" action="{{ @BASE }}/Search">
             <div id="section-box-box">Filter</div>
-            <div id="section-box-box2">Filter</div>
+            <!--div id="section-box-box2">Filter</div-->
             <div id="section-box-box3">
-                <input type="checkbox" name="1" value="1"><span>&#160;&#160;Posted a day ago</span>
-                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
-                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
-                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
-                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
-                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
-                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+
+                <input type="checkbox" name="tattoo" value=1><span>&#160;&#160;Tattoo</span>
+                <br><input type="checkbox" name="birthmark" value=1><span>&#160;&#160;birthmark</span>
+                <br><input type="text" name="age" oninput="value=value.replace(/[^\d]/g,'')"  size="16" placeholder="(0~The Number You Enter)"><span>&#160;&#160;Age</span>
+                <br><input type="text" name="height" oninput="value=value.replace(/[^\d]/g,'')" size="16"  placeholder="(0~The Number You Enter)"><span>&#160;&#160;Height</span>
+                <br>Gender: &#160;&#160;
+                <select  name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+                <br>Skin Color: &#160;&#160;
+                <select  name="skincolor" style="width:60px;">
+                    <option  value="white" style="background-color:white" ></option>
+                    <option  value="yellow" style="background-color:navajowhite" ></option>
+                    <option  value="black" style="background-color:black" ></option>
+                </select>
+                <!--br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span-->
             </div>
             <div id="section-box-box2" style="margin: 15px 0 0;">Filter</div>
-            <div id="section-box-box3">
+
+            <!--div id="section-box-box3">
                 <input type="checkbox" name="1" value="1"><span>&#160;&#160;Posted a day ago</span>
                 <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+            </div-->
+            <br>
+            <div>
+                <input type="submit" name="Search" value="Search" />
             </div>
-        </div>
+
+
+        </form>
 
         <div id="section-box2">
             <div id="section-box2-box">
@@ -74,7 +93,7 @@
             <div id="section-box4">
                 <img src="images/8.jpg" width="60px" alt="8" style="border-radius: 30px;">
                 <span id="span-wen1">An unnamed corpse wearing a black peaked cap</span>
-                <span id="span-wen2"><img src="images/9.png" width="10px" alt="9">&#160;offical cerihicfon &#160;&#160;&#160;&#160;&#160;<img src="../images/10.png" width="10px" alt="9">&#160;Posted a day cap</span>
+                <span id="span-wen2"><img src="images/9.png" width="10px" alt="9">&#160;offical cerihicfon &#160;&#160;&#160;&#160;&#160;<img src="images/10.png" width="10px" alt="9">&#160;Posted a day cap</span>
                 <span id="span-wen3">
                     At 22:52 on February 16,2021,a small car collided with a pedestioa at<br>
                     2KM+130M,Shugang Avenue,Gulai Town,Zhangpu County,Zhangpu<br>

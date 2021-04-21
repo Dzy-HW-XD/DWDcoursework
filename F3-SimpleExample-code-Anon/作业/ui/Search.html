@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/Search.css">
+</head>
+
+<body>
+    <div id="header">
+        <div id="nav">
+            <img src="images/logo.png" id="nav-img" alt="logo">
+            <div id="nav-ul">
+                <ul>
+                    <li><a href="{{ @BASE }}/Home" style="font-weight: bold;">Hello</a><b></b></li>
+                    <li><a href="{{ @BASE }}/Search">Search</a></li>
+                    <li><a href="{{ @BASE }}/Upload">Upload</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <a id="nav-div" href="{{ @BASE }}/Home/#Contact">login</a>
+            <script>
+                var i = 0;
+                var btn1 = document.getElementById("nav-div");
+                btn1.onclick = function() {
+                    var section = document.getElementById("section");
+                    var section2 = document.getElementById("section2");
+                    if (i % 2 == 0) {
+                        section.style.display = 'none';
+                        section2.style.display = 'block';
+                    } else {
+                        section.style.display = 'block';
+                        section2.style.display = 'none';
+                    }
+                    ++i;
+                };
+            </script>
+        </div>
+    </div>
+
+    <div id="section">
+        <div id="section-box">
+            <div id="section-box-box">Filter</div>
+            <div id="section-box-box2">Filter</div>
+            <div id="section-box-box3">
+                <input type="checkbox" name="1" value="1"><span>&#160;&#160;Posted a day ago</span>
+                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+            </div>
+            <div id="section-box-box2" style="margin: 15px 0 0;">Filter</div>
+            <div id="section-box-box3">
+                <input type="checkbox" name="1" value="1"><span>&#160;&#160;Posted a day ago</span>
+                <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+            </div>
+        </div>
+
+        <div id="section-box2">
+            <div id="section-box2-box">
+                <input type="text" placeholder="Enter information about the deceased">
+                <button>Search</button>
+            </div>
+
+            <div id="section-box3">There are 41 search results </div>
+
+            <div id="section-box4">
+                <img src="images/8.jpg" width="60px" alt="8" style="border-radius: 30px;">
+                <span id="span-wen1">An unnamed corpse wearing a black peaked cap</span>
+                <span id="span-wen2"><img src="images/9.png" width="10px" alt="9">&#160;offical cerihicfon &#160;&#160;&#160;&#160;&#160;<img src="../images/10.png" width="10px" alt="9">&#160;Posted a day cap</span>
+                <span id="span-wen3">
+                    At 22:52 on February 16,2021,a small car collided with a pedestioa at<br>
+                    2KM+130M,Shugang Avenue,Gulai Town,Zhangpu County,Zhangpu<br>
+                    Conty(near the section of Fuxiang Hotel in Chengcun),causing pedesrians
+                </span>
+                <span id="span-wen4">made</span><span id="span-wen4" style="width: 150px;">4055 years old</span><span id="span-wen4">Chinese</span>
+            </div>
+
+            <div id="section-box4">
+                <img src="images/8.jpg" width="60px" alt="8" style="border-radius: 30px;">
+                <span id="span-wen1">An unnamed corpse wearing a black peaked cap</span>
+                <span id="span-wen2"><img src="images/9.png" width="10px" alt="9">&#160;offical cerihicfon &#160;&#160;&#160;&#160;&#160;<img src="../images/10.png" width="10px" alt="9">&#160;Posted a day cap</span>
+                <span id="span-wen3">
+                    At 22:52 on February 16,2021,a small car collided with a pedestioa at<br>
+                    2KM+130M,Shugang Avenue,Gulai Town,Zhangpu County,Zhangpu<br>
+                    Conty(near the section of Fuxiang Hotel in Chengcun),causing pedesrians
+                </span>
+                <span id="span-wen4">made</span><span id="span-wen4" style="width: 150px;">4055 years old</span><span id="span-wen4">Chinese</span>
+            </div>
+
+            <div id="section-box4">
+                <img src="images/8.jpg" width="60px" alt="8" style="border-radius: 30px;">
+                <span id="span-wen1">An unnamed corpse wearing a black peaked cap</span>
+                <span id="span-wen2"><img src="images/9.png" width="10px" alt="9">&#160;offical cerihicfon &#160;&#160;&#160;&#160;&#160;<img src="../images/10.png" width="10px" alt="9">&#160;Posted a day cap</span>
+                <span id="span-wen3">
+                    At 22:52 on February 16,2021,a small car collided with a pedestioa at<br>
+                    2KM+130M,Shugang Avenue,Gulai Town,Zhangpu County,Zhangpu<br>
+                    Conty(near the section of Fuxiang Hotel in Chengcun),causing pedesrians
+                </span>
+                <span id="span-wen4">made</span><span id="span-wen4" style="width: 150px;">4055 years old</span><span id="span-wen4">Chinese</span>
+            </div>
+
+            <div id="section-box4">
+                <img src="images/8.jpg" width="60px" alt="8" style="border-radius: 30px;">
+                <span id="span-wen1">An unnamed corpse wearing a black peaked cap</span>
+                <span id="span-wen2"><img src="images/9.png" width="10px" alt="9">&#160;offical cerihicfon &#160;&#160;&#160;&#160;&#160;<img src="../images/10.png" width="10px" alt="9">&#160;Posted a day cap</span>
+                <span id="span-wen3">
+                    At 22:52 on February 16,2021,a small car collided with a pedestioa at<br>
+                    2KM+130M,Shugang Avenue,Gulai Town,Zhangpu County,Zhangpu<br>
+                    Conty(near the section of Fuxiang Hotel in Chengcun),causing pedesrians
+                </span>
+                <span id="span-wen4">made</span><span id="span-wen4" style="width: 150px;">4055 years old</span><span id="span-wen4">Chinese</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer">
+        <div id="footer-box">
+            <div class="footer-box-box">
+                <b>Banky</b><br><br>
+                <span>Let's connect on</span><br>
+                <span>social media:</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Useful Information</b><br><br>
+                <span>Who we are</span><br>
+                <span>Services</span><br>
+                <span>Help Center</span><br>
+                <span>FAQ</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Navigation</b><br><br>
+                <span>Home</span><br>
+                <span>About</span><br>
+                <span>Features</span><br>
+                <span>Contact Us</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Legal</b><br><br>
+                <span>Terms of Use</span><br>
+                <span>Privacy Policy</span><br>
+                <span>Accessibility</span><br>
+                <span>Security</span>
+            </div>
+        </div>
+
+        <div id="footer-box2">
+            Copyright 2021 All right reseryed
+        </div>
+    </div>
+</body>
+
+</html>

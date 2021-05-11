@@ -7,3 +7,4 @@ navdiv.onclick = function() {
     section.style.display = 'none';
     section2.style.display = 'block';
 }
+

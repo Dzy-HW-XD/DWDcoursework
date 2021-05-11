@@ -1,0 +1,83 @@
+#section {
+    width: 100%;
+    height: 720px;
+    margin: auto;
+    background: #124e91;
+}
+
+#video-box {
+    width: 1280px;
+    height: 720px;
+    margin: auto;
+}
+
+#section-box {
+    width: 1280px;
+    height: 720px;
+    border-radius: 30px;
+    margin: auto;
+}
+
+#login-box {
+    width: 150px;
+    height: 30px;
+    margin: 0 0 50px;
+    border-radius: 30px;
+}
+
+#login-box2 {
+    width: 500px;
+    height: 100px;
+    line-height: 25px;
+    border-radius: 30px;
+}
+
+#login-box-img {
+    width: 25px;
+    float: left;
+}
+
+#login {
+    width: 540px;
+    height: 620px;
+    padding: 100px 0 0 100px;
+    float: right;
+    margin: -722px 0 0;
+    position: relative;
+    z-index: 3;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    background: rgb(255, 255, 255);
+}
+
+form {
+    font-size: 16px;
+    line-height: 30px;
+}
+
+form input {
+    width: 300px;
+    height: 30px;
+    border-radius: 3px;
+    text-indent: 30px;
+    letter-spacing: 1px;
+    margin: 10px 0px 0px 10px;
+}
+
+form #checkbox {
+    border-radius: 3px;
+    text-indent: 30px;
+    letter-spacing: 1px;
+    margin: 10px 0px 0px 10px;
+    float: left;
+    width: 44px;
+}
+
+.item_dq_f {
+    position: relative;
+}
+
+.item_dq {
+    position: absolute;
+    left: 94px;
+}

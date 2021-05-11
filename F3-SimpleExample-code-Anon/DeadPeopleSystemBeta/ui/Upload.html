@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/Upload.css">
     <link rel="stylesheet" href="css/footer.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
 </head>
 
 <body>
@@ -17,286 +20,279 @@
             <img src="images/logo.png" id="nav-img" alt="logo">
             <div id="nav-ul">
                 <ul>
-                    <li><a href="{{ @BASE }}/Home" style="font-weight: bold;">Hello</a><b></b></li>
-                    <li><a href="{{ @BASE }}/Search">Search</a></li>
-                    <li><a href="{{ @BASE }}/Upload">Upload</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="{{ @BASE }}/UserWelcome">Hello</a></li>
+                    <li><a href="{{ @BASE }}/UserSearch">Search</a></li>
+                    <li><a href="{{ @BASE }}/Upload" style="color: #00ffd2">Upload</a><b></b></li>
                 </ul>
+                <a id="nav-div" class="nav_sigin_out_upload" href="{{ @BASE }}/Home"></a>
             </div>
             <!--div id="nav-div">login</div-->
-            <script>
-                var i = 0;
-                var btn1 = document.getElementById("nav-div");
-                btn1.onclick = function() {
-                    var section = document.getElementById("section");
-                    var section2 = document.getElementById("section2");
-                    if (i % 2 == 0) {
-                        section.style.display = 'none';
-                        section2.style.display = 'block';
-                    } else {
-                        section.style.display = 'block';
-                        section2.style.display = 'none';
-                    }
-                    ++i;
-                };
-            </script>
         </div>
     </div>
 
     <div id="section">
+
         <div id="section-box">
+
+            <video src="images/white.mp4" width="100%" height="100%" id="video-box" width="1253" style="border-radius: 50px " muted="muted" onMouseOver="this.play()"></video>
             <form method="post" action="{{ @BASE }}/Upload" enctype="multipart/form-data">
+                <div id="login">
+                    <div id="login-box">
+                        <img src="images/logo.png" id="login-box-img" alt="logo">
+                        <span>BCD</span>
+                    </div>
 
-            <video src="images/8.mp4" width="1280" autoplay loop muted></video>
+                    <div id="login-box2">
+                        <h1 style="font-weight: bold;">Upload</h1><br>
+                        <span>Upload the personal information of the body</span>
+                    </div>
 
-            <div id="login">
-                <div id="login-box">
-                    <img src="images/logo.png" id="login-box-img" alt="logo">
-                    <span>BCD</span>
-                </div>
-
-                <div id="login-box2">
-                    <h1 style="font-weight: bold;">Upload</h1><br>
-                    <span>Upload the personal information of the deceased</span>
-                </div>
-
-                <div>
-                    Full Name
-                    <br><input type="text" name="name" size="30" placeholder="Jack Dean">
-                    <br>Age
-                    <br><input type="text" name="age" size="16" placeholder="Enter Age" oninput = "value=value.replace(/[^\d]/g,'')">
-                    <br>Skin colour
-                    <select  name="skincolor" style="width:100px;">
+                    <div class="login_text">
+                        Full Name:
+                        <br><input type="text" name="name" size="30" placeholder="Enter your name">
+                        <br>Age:
+                        <br><input type="text" name="age" size="16" placeholder="Enter Age" oninput="value=value.replace(/[^\d]/g,'')" required="required">
+                        <br>Skin colour:
+                        <!-- <select name="skincolor" style="width:100px;">
                         <option id="form-span1" value="white" ></option>
                         <option id="form-span2" value="yellow" ></option>
                         <option id="form-span3" value="black" ></option>
-                    </select>
+                    </select> -->
+                        <div class="color">
+                            <div class="color_btn"></div>
+                            <input type="radio" name="skincolor" value="white" id="white_radio"  style="float:left;width: 15px" checked><div  style="border-style:dashed;width: 300px;height:30px;border-width:1px;border-color:black;background: whitesmoke;margin-left: 30px" ></div>
+                            <br><input type="radio" name="skincolor" value="yellow" id="yellow_radio"style="float:left;width: 15px"><div    style="border-style:dashed;width: 300px;height:30px;border-width:1px;border-color:black;background: #fbff20;margin-left: 30px"></div>
+                            <br><input type="radio" name="skincolor" value="black" id="black_radio"style="float:left;width: 15px"><div  style="border-style:dashed;width: 300px;height:30px;border-width:1px;border-color:black;background: black;margin-left: 30px"></div>
+                        </div>
+                    </div>
+
+                    <div id="login-box3">
+                        <span style="margin: 0  70px 0 110px;">1/5</span><span id="btn3" class="btn3"></span>
+                    </div>
 
                 </div>
 
-                <div id="login-box3">
-                    <span style="margin: 0  70px 0 110px;">1/5</span><span id="btn3" class="btn3" style="color: #fff;background: rgb(58, 123, 247);">Next</span>
-                </div>
+                <div id="login2">
+                    <div id="login-box">
+                        <img src="images/logo.png" id="login-box-img" alt="logo">
+                        <span>BCD</span>
+                    </div>
 
-            </div>
+                    <div id="login-box2">
+                        <h1 style="font-weight: bold;">Upload</h1><br>
+                        <span>Upload the personal information of the body</span>
+                    </div>
 
-            <div id="login2">
-                <div id="login-box">
-                    <img src="images/logo.png" id="login-box-img" alt="logo">
-                    <span>BCD</span>
-                </div>
-
-                <div id="login-box2">
-                    <h1 style="font-weight: bold;">Upload</h1><br>
-                    <span>Upload the personal information of the deceased</span>
-                </div>
-
-                <div>
-                    Height(cm)
-                    <br><input type="text" name="height" size="30" oninput = "value=value.replace(/[^\d]/g,'')">
-                    <br>Time of death
-                    <br><input type="date" name="timeOfdeath" size="16" placeholder="2021-04-01">
-                    <br>Place of death
-                    <select  name="placeOfdeath" style="width:100px;">
-                        <option  value="England">England</option>
-                        <option  value="Scotland">Scotland</option>
-                        <option  value="Welsh">Welsh</option>
-                        <option  value="Northern Ireland">Northern Ireland</option>
-                    </select>
-                    <br>Cause of death
-                    <br><input type="text" name="causeOfdeath" size="16" placeholder="Car accident">
-                </div>
-
-                <div id="login-box3">
-                    <span id="back1">Back</span><span style="margin: 0  62px 0;">2/5</span><span id="btn4" class="btn3" style="color: #fff;background: rgb(58, 123, 247);">Next</span>
-                </div>
-
-            </div>
-
-            <div id="login3">
-                <div id="login-box">
-                    <img src="images/logo.png" id="login-box-img" alt="logo">
-                    <span>BCD</span>
-                </div>
-
-                <div id="login-box2">
-                    <h1 style="font-weight: bold;">Upload</h1><br>
-                    <span>Upload the personal information of the deceased</span>
-                </div>
-
-                <div>
                     <div>
-                        <br>Does the deceaied has tattoo?
-                        <select  name="tattoo">
-                            <option>yes</option>
-                            <option>no</option>
+                        Height(cm):
+                        <br><input type="text" name="height" size="30" oninput="value=value.replace(/[^\d]/g,'')" placeholder="175cm" required="required">
+                        <br>Time of death:
+                        <br><input type="date" id="time" name="timeOfdeath" size="16" placeholder="2021-04-01" required="required">
+                        <br>Place of death:
+                        <br><select  name="placeOfdeath" style="width: 330px;
+                                                            height: 30px;
+                                                            border-radius: 3px;
+                                                            text-indent: 30px;
+                                                            letter-spacing: 1px;">
+                            <option value="England">England</option>
+                            <option value="Scotland">Scotland</option>
+                            <option value="Welsh">Welsh</option>
+                            <option value="Northern Ireland">Northern Ireland</option>
                         </select>
+                        <br>Cause of death:
+                        <br><input type="text" name="causeOfdeath" size="16" placeholder="Car accident" required="required">
+                    </div>
+
+                    <div id="login-box3">
+                        <span id="back1" class="back_img"></span><span style="margin: 0  62px 0;">2/5</span><span id="btn4" class="btn3"></span>
+                    </div>
+
+                </div>
+
+                <div id="login3">
+                    <div id="login-box">
+                        <img src="images/logo.png" id="login-box-img" alt="logo">
+                        <span>BCD</span>
+                    </div>
+
+                    <div id="login-box2">
+                        <h1 style="font-weight: bold;">Upload</h1><br>
+                        <span>Upload the personal information of the body</span>
+                    </div>
+
+
+                        <div>
+                            <br>Does the body has tattoo?
+                            <div class="box_btn">
+                                    <input type="radio"  style="width: 25px" name="tattoo" value=yes>Yes&#160;&#160;&#160;&#160;
+                                    <input type="radio"  style="width: 25px"name="tattoo" value=no>No
+                            </div>
+                        </div>
+                        <div>
+                            <br>Does the body has birthmark?
+                            <div class="box_btn">
+                                    <input type="radio" style="width: 25px" name="birthmark" value=yes>Yes&#160;&#160;&#160;&#160;
+                                    <input type="radio" style="width: 25px" name="birthmark" value=no>No
+                            </div>
+
+                        </div>
+                        <div>
+                            <br>Information release authority:
+                            <br><input type="text" name="authority" size="30">
+                        </div>
+                        <div>
+                            <br>Contact Number:
+                            <br><input type="text" name="contactnumber" size="30" oninput="value=value.replace(/[^\d]/g,'')">
+                        </div>
+
+
+                    <div id="login-box3">
+                        <span id="back2" class="back_img"></span><span style="margin: 0  62px 0;">3/5</span><span id="btn5" class="btn3"></span>
+                    </div>
+
+                </div>
+
+                <div id="login4">
+                    <div id="login-box">
+                        <img src="images/logo.png" id="login-box-img" alt="logo">
+                        <span>BCD</span>
+                    </div>
+
+                    <div id="login-box2">
+                        <h1 style="font-weight: bold;">Upload</h1><br>
+                        <span>Upload the personal information of the body</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <br>Gender:
+                            <div class="box_btn">
+                                <input type="radio" style="width: 25px" name="gender" value="male">Male&#160;&#160;&#160;&#160;
+                                <input type="radio" style="width: 25px" name="gender" value="female">Female
+                            </div>
+                        </div>
+
+                        <br>Other information:
+                        <br><textarea name="otherinformation" id="textarea" cols="36" rows="10" placeholder="You can also fill in other information directly such as color clothing weight hair color..." style="padding: 5px 10px 0 10px;"></textarea>
+                    </div>
+
+                    <div id="login-box3">
+                        <span id="back3" class="back_img"></span><span style="margin: 0  62px 0;">4/5</span><span id="btn6" class="btn3"></span>
+                    </div>
+
+                </div>
+
+                <div id="login5">
+                    <div id="login-box">
+                        <img src="images/logo.png" id="login-box-img" alt="logo">
+                        <span>BCD</span>
+                    </div>
+
+                    <div id="login-box2">
+                        <h1 style="font-weight: bold;">Upload</h1><br>
+                        <span>Upload the personal information of the body</span>
+                    </div>
+
+                    <div>
+                        <br>Upload relevant photos of body
+                        <br>(appearence,dething,etc)
+                        <br>Select image file: <input type="file" accept="image/*" name="picfile" id="picfile" style="width: 200px;" onchange="change()" />
+                        <!--label for='pictitle'>Unique Title: </label-->
+                        <br><img id="preview" alt="" name="pic" style="width:100px;height:100px;">
+
+
+                        <!--input type="text" name="pictitle" id="pictitle" onchange="Duplicate()" /-->
+                    </div>
+
+                    <div id="login-box3">
+                        <span id="back4" class="back_img"></span><span style="margin: 0  62px 0;">5/5</span>
                     </div>
                     <div>
-                        <br>Does the deceaied has birthmark?
-                        <select  name="birthmark">
-                            <option>yes</option>
-                            <option>no</option>
-                        </select>
-
-                    </div>
-                    <div>
-                        <br>Information release authority
-                        <br><input type="text" name="authority" size="30">
-                    </div>
-                    <div>
-                        <br>Contact Number
-                        <br><input type="text" name="contactnumber" size="30" oninput = "value=value.replace(/[^\d]/g,'')">
+                        <br><input type="submit" name="Submit" value="Submit" />
                     </div>
                 </div>
-
-                <div id="login-box3">
-                    <span id="back2" style="background: rgb(243,243,243);">Back</span><span style="margin: 0  62px 0;">3/5</span><span id="btn5" class="btn3" style="color: #fff;background: rgb(58, 123, 247);">Next</span>
-                </div>
-
-            </div>
-
-            <div id="login4">
-                <div id="login-box">
-                    <img src="images/logo.png" id="login-box-img" alt="logo">
-                    <span>BCD</span>
-                </div>
-
-                <div id="login-box2">
-                    <h1 style="font-weight: bold;">Upload</h1><br>
-                    <span>Upload the personal information of the deceased</span>
-                </div>
-
-                <div>
-                    <div>
-                        <br>Gender
-                        <select  name="gender">
-                            <option>male</option>
-                            <option>female</option>
-                            <option>unknown</option>
-                        </select>
-                    </div>
-
-                    <br>Other information
-                    <br><textarea name="otherinformation" id="textarea" cols="36" rows="10" placeholder="You can also fill in other information directly such as color clothing weight hair color..." style="padding: 5px 10px 0 10px;"></textarea>
-                </div>
-
-                <div id="login-box3">
-                    <span id="back3" style="background: rgb(243, 243, 243);">Back</span><span style="margin: 0  62px 0;">4/5</span><span id="btn6" class="btn3" style="color: #fff;background: rgb(58, 123, 247);">Next</span>
-                </div>
-
-            </div>
-
-            <div id="login5">
-                <div id="login-box">
-                    <img src="images/logo.png" id="login-box-img" alt="logo">
-                    <span>BCD</span>
-                </div>
-
-                <div id="login-box2">
-                    <h1 style="font-weight: bold;">Upload</h1><br>
-                    <span>Upload the personal information of the deceased</span>
-                </div>
-
-                <div>
-                    <br>Upload relevant photos of the deceesed
-                    <br>(appearence,dething,etc)
-                    <br>
-                    <label for='picfile'>Select image file: </label><input type="file" accept="image/*" name="picfile" id="picfile" onchange="change()" />
-                    <img id="preview" alt="" name="pic" style="width:100px;height:100px;" />
-                </div>
-
-                <div id="login-box3">
-                    <span id="back4" style="background: rgb(243, 243, 243);">Back</span><span style="margin: 0  62px 0;">5/5</span>
-                </div>
-                <div>
-                    <input type="submit" name="Submit" value="Submit" />
-                </div>
-            </div>
-
-
                 <script>
                     function change() {
                         var pic = document.getElementById("preview"),
                             file = document.getElementById("picfile");
 
-                        var ext=file.value.substring(file.value.lastIndexOf(".")+1).toLowerCase();
+                        var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
 
-                        if(ext!='png'&&ext!='jpg'&&ext!='jpeg'){
+                        if (ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
                             alert("Please Enter Correct File file format(png/jpg/jpeg)");
                             return;
                         }
-                        var isIE = navigator.userAgent.match(/MSIE/)!= null,
-                            isIE6 = navigator.userAgent.match(/MSIE 6.0/)!= null;
+                        var isIE = navigator.userAgent.match(/MSIE/) != null,
+                            isIE6 = navigator.userAgent.match(/MSIE 6.0/) != null;
 
-                        if(isIE) {
+                        if (isIE) {
                             file.select();
                             var reallocalpath = document.selection.createRange().text;
 
                             if (isIE6) {
                                 pic.src = reallocalpath;
-                            }else {
+                            } else {
                                 pic.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='image',src=\"" + reallocalpath + "\")";
                                 // Set img SRC to base64-encoded transparent images to undisplay browser default images
                                 pic.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
                             }
-                        }else {
+                        } else {
                             html5Reader(file);
                         }
                     }
 
-                    function html5Reader(file){
+                    function html5Reader(file) {
                         var file = file.files[0];
                         var reader = new FileReader();
                         reader.readAsDataURL(file);
-                        reader.onload = function(e){
+                        reader.onload = function(e) {
                             var pic = document.getElementById("preview");
-                            pic.src=this.result;
+                            pic.src = this.result;
                         }
                     }
                 </script>
-            <script>
-                var login = document.getElementById("login");
-                var login2 = document.getElementById("login2");
-                var login3 = document.getElementById("login3");
-                var login4 = document.getElementById("login4");
-                var login5 = document.getElementById("login5");
-                var btn3 = document.getElementById("btn3");
-                var back1 = document.getElementById("back1");
-                btn3.onclick = function() {
-                    login.style.display = 'none';
-                    login2.style.display = 'block';
-                }
-                btn4.onclick = function() {
-                    login2.style.display = 'none';
-                    login3.style.display = 'block';
-                }
-                btn5.onclick = function() {
-                    login3.style.display = 'none';
-                    login4.style.display = 'block';
-                }
-                btn6.onclick = function() {
-                    login4.style.display = 'none';
-                    login5.style.display = 'block';
-                }
+                <script>
+                    var login = document.getElementById("login");
+                    var login2 = document.getElementById("login2");
+                    var login3 = document.getElementById("login3");
+                    var login4 = document.getElementById("login4");
+                    var login5 = document.getElementById("login5");
+                    var btn3 = document.getElementById("btn3");
+                    var back1 = document.getElementById("back1");
+                    btn3.onclick = function() {
+                        login.style.display = 'none';
+                        login2.style.display = 'block';
+                    }
+                    btn4.onclick = function() {
+                        login2.style.display = 'none';
+                        login3.style.display = 'block';
+                    }
+                    btn5.onclick = function() {
+                        login3.style.display = 'none';
+                        login4.style.display = 'block';
+                    }
+                    btn6.onclick = function() {
+                        login4.style.display = 'none';
+                        login5.style.display = 'block';
+                    }
 
-                back1.onclick = function() {
-                    login2.style.display = 'none';
-                    login.style.display = 'block';
-                }
-                back2.onclick = function() {
-                    login3.style.display = 'none';
-                    login2.style.display = 'block';
-                }
-                back3.onclick = function() {
-                    login4.style.display = 'none';
-                    login3.style.display = 'block';
-                }
-                back4.onclick = function() {
-                    login5.style.display = 'none';
-                    login4.style.display = 'block';
-                }
-            </script>
+                    back1.onclick = function() {
+                        login2.style.display = 'none';
+                        login.style.display = 'block';
+                    }
+                    back2.onclick = function() {
+                        login3.style.display = 'none';
+                        login2.style.display = 'block';
+                    }
+                    back3.onclick = function() {
+                        login4.style.display = 'none';
+                        login3.style.display = 'block';
+                    }
+                    back4.onclick = function() {
+                        login5.style.display = 'none';
+                        login4.style.display = 'block';
+                    }
+                </script>
             </form>
         </div>
     </div>
@@ -335,6 +331,8 @@
             Copyright 2021 All right reseryed
         </div>
     </div>
+
 </body>
+
 
 </html>

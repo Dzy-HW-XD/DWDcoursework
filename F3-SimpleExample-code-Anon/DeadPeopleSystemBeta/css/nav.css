@@ -12,7 +12,7 @@
 body {
     width: 100%;
     margin: auto;
-    font-family: abc;
+    font-family: abcd;
 }
 
 #header {
@@ -21,6 +21,7 @@ body {
     margin: auto;
     /* background: rgb(0, 63, 131); */
     background: rgb(0, 82, 160);
+    font-size: 15px;
 }
 
 #nav {
@@ -30,6 +31,7 @@ body {
     position: relative;
     top: 18px;
     letter-spacing: 1px;
+    padding: 0 20px;
 }
 
 #nav-img {
@@ -40,7 +42,7 @@ body {
 }
 
 #nav-ul {
-    width: 500px;
+    width: 700px;
     height: 52px;
     float: left;
     position: relative;
@@ -60,30 +62,65 @@ body {
     width: 100px;
     height: 52px;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     color: #fff;
 }
 
 #nav-ul ul li b {
     display: block;
-    width: 5px;
-    height: 5px;
+    width: 10px;
+    height: 10px;
     background: rgb(228, 186, 93);
     margin: auto;
-    border-radius: 100%;
+    border-radius: 30px;
     position: relative;
     top: -10px;
 }
 
-#nav-div {
-    width: 90px;
-    height: 40px;
+.nav_sigin {
+    width: 150px;
+    height: 64px;
     line-height: 40px;
     text-align: center;
     font-size: 14px;
     color: #fff;
-    background: rgb(44, 113, 246);
+    /* background: rgb(44, 113, 246); */
+    background: url(../images/sign.png);
+    background-size: cover;
     float: right;
-    margin: 6px 0 0 0;
+    margin: -5px 0 0 0;
     border-radius: 10px;
+    margin-left: 20px;
+}
+
+.nav_login {
+    width: 150px;
+    height: 65px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    /* background: rgb(44, 113, 246); */
+    background: url(../images/login.png);
+    background-size: cover;
+    float: right;
+    margin: -5px 0 0 0;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.nav_sigin_out {
+    width: 150px;
+    height: 54px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    /* background: rgb(44, 113, 246); */
+    background: url(../images/sign_out.png);
+    background-size: 154px 61px;
+    float: right;
+    margin: -1px 0 0 0;
+    border-radius: 10px;
+    margin-left: 20px;
 }

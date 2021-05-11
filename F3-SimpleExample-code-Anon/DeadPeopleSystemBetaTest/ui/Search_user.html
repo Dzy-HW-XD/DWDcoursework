@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/Search.css">
+    <script>
+        function deny(){
+            alert("Upload function is not open to visitors.Administrator please log in.");
+            window.location.href="{{ @BASE }}/Home#Contact";
+        }
+    </script>
+</head>
+
+<body>
+<div id="header">
+    <div id="nav">
+        <img src="images/logo.png" id="nav-img" alt="logo">
+        <div id="nav-ul">
+            <ul>
+                <li><a href="{{ @BASE }}/UserWelcome" style="font-weight: bold;">Hello</a></li>
+                <li><a href="{{ @BASE }}/Search">Search</a><b></b></li>
+                <li><a href="{{ @BASE }}/Upload"  style="color: #00ffd2">Upload</a></li>
+            </ul>
+        </div>
+        <a id="nav-div" href="{{ @BASE }}/Home">Sign Out</a>
+        <!--script>
+            var i = 0;
+            var btn1 = document.getElementById("nav-div");
+            btn1.onclick = function() {
+                var section = document.getElementById("section");
+                var section2 = document.getElementById("section2");
+                if (i % 2 == 0) {
+                    section.style.display = 'none';
+                    section2.style.display = 'block';
+                } else {
+                    section.style.display = 'block';
+                    section2.style.display = 'none';
+                }
+                ++i;
+            };
+        </script-->
+    </div>
+</div>
+
+
+<div id="section">
+    <form id="section-box" method="post" name="filiter"action="{{ @BASE }}/UserSearch">
+        <div id="section-box-box">{{@SESSION.userName}},Welcome</div>
+        <!--div id="section-box-box2">Filter</div-->
+        <div id="section-box-box3">
+            <div>
+                <span>Tattoo&#160;&#160;</span>
+                <input  type="radio" checked="checked" id="tattooyes" name="tattoo" value=1/><label for="tattooyes">Yes</label>
+                <input  type="radio"  name="tattoo" id="tattoono" value=0/><label for="tattoono">No</label>
+            </div>
+
+            <div>
+                <span>birthmark&#160;</span>
+                <input  type="radio" checked="checked" name="birthmark" id="birthmarkyes" value=1/><label for="birthmarkyes">Yes</label>
+                <input  type="radio"  name="birthmark" id="birthmarkno" value=0/><label for="birthmarkno">No</label>
+            </div>
+
+            <!--br><input type="checkbox" name="birthmark" value=1><span>&#160;&#160;birthmark</span-->
+            <br><span>Age:&#160;&#160;</span><input type="text" name="age" id="age" size="16" style="width:100px;" placeholder="(0~The Number You Enter)" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required="0-99" >
+            <br><span>Height:&#160;&#160;</span><input type="text" name="height" id="height" size="16"  style="width:100px;" placeholder="(0~The Number You Enter)" oninput="this.value = this.value.replace(/[^0-9]/g, '');"required="0-200">
+            <br>Gender: &#160;&#160;
+            <select  name="gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="unknown">Unknown</option>
+            </select>
+            <br>Skin Color: &#160;&#160;
+            <select  name="skincolor" id="skincolor" style="width:60px;">
+                <option  value="white" style="background-color:white" ></option>
+                <option  value="yellow" style="background-color:navajowhite" ></option>
+                <option  value="black" style="background-color:black" ></option>
+            </select>
+            <br>Place Of Death: &#160;&#160;
+            <select  name="placeofdeath" id="placeofdeath" style="width:100px;">
+                <option  value="England">England</option>
+                <option  value="Scotland">Scotland</option>
+                <option  value="Welsh">Welsh</option>
+                <option  value="Northern Ireland">Northern Ireland</option>
+            </select>
+            <!--br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+            <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span-->
+        </div>
+        <div id="section-box-box2" style="margin: 15px 0 0;">Filter</div>
+
+        <!--div id="section-box-box3">
+            <input type="checkbox" name="1" value="1"><span>&#160;&#160;Posted a day ago</span>
+            <br><input type="checkbox" name="2" value="2"><span>&#160;&#160;Posted a day ago</span>
+        </div-->
+        <br>
+        <div>
+            <input type="submit" name="Search_filiter" value="Search" onclick="store()"/>
+        </div>
+    </form>
+
+
+    <div id="section-box2">
+        <form method="post"  action="{{ @BASE }}/UserSearch" id="section-box2-box">
+            <input type="text" placeholder="Fuzzy Search,Enter NOTHING search ALL bodies" name="textSearch" id="textSearch">
+            <input type="submit"  name="Search_text"  value="Submit" style="width: 110px;
+                                                                height: 35px;
+                                                                border-radius: 30px;
+                                                                line-height: 36px;
+                                                                border: none;
+                                                                text-align: left;
+                                                                display:inline-block;
+                                                                background: black;" onclick="store_fuzzy()">
+        </form>
+
+        <div id="section-box3">There are {{ @length }} search results </div>
+        <table>
+            <repeat group="{{ @result }}" value="{{ @info }}">
+                <div id="section-box4">
+                    <img src="images/8.jpg" width="60px" alt="8" style="border-radius: 30px;">
+                    <div id="span-wen1">{{ trim(@info.name) }}</div>
+                    <div id="span-wen2"><img src="images/9.png" width="10px" alt="9">&#160;{{ @info.causeofdeath }} &#160;&#160;&#160;&#160;&#160;<img src="images/10.png" width="10px" alt="9">&#160;{{ @info.timeofdeath }}&#160;&#160;&#160;&#160;&#160;<img src="images/logo.png" width="10px" alt="9">&#160;{{ @info.skincolor }} skin</div>
+
+                    <div id="span-wen3">On {{ @info.timeofdeath }},a body found at {{ @info.placeofdeath }}<br></div>
+
+                    <div id="span-wen3">The cause of death is preliminarily determined as <b>{{ @info.causeofdeath }}</b><br></div>
+
+                    <div id="span-wen3">The information of the deceased was issued by <b>{{ @info.authority }}</b>.</div>
+
+                    <div id="span-wen4">{{ trim(@info.height) }}cm</div><div id="span-wen4" style="width: 150px;">{{ trim(@info.age) }} years old</div><div id="span-wen4">{{ trim(@info.placeofdeath) }}</div>
+                </div>
+            </repeat>
+        </table>
+
+    </div>
+</div>
+<script>
+    function store() {
+        //print(1);
+        var obj_tattoo=document.getElementsByName("tattoo")
+        for (var i=0;i<obj_tattoo.length;i++) {
+            if (obj_tattoo[i].checked) {
+                var tattoo = obj_tattoo[i].value;
+            }
+        }
+
+        var obj_birthmark=document.getElementsByName("birthmark")
+        for (var i=0;i<obj_birthmark.length;i++) {
+            if (obj_birthmark[i].checked) {
+                var birthmark = obj_birthmark[i].value;
+            }
+        }
+        var age = document.getElementById('age').value;
+        var height = document.getElementById('height').value;
+        var gender = document.getElementById('gender').value;
+        var skincolor = document.getElementById('skincolor').value;
+        var placeofdeath = document.getElementById('placeofdeath').value;
+
+
+        localStorage.setItem("age_store", age);
+        localStorage.setItem("height_store", height);
+        localStorage.setItem("tattoo_store", tattoo);
+        localStorage.setItem("birthmark_store", birthmark);
+        localStorage.setItem("gender_store", gender);
+        localStorage.setItem("skincolor_store", skincolor);
+        localStorage.setItem("placeofdeath_store", placeofdeath);
+
+    }
+    function store_fuzzy(){
+        var textSearch = document.getElementById("textSearch").value;
+        localStorage.setItem("textSearch_store", textSearch);
+    }
+</script>
+<script>
+    var age_get = localStorage.getItem("age_store");
+    var height_get = localStorage.getItem("height_store");
+    var tattoo_get = localStorage.getItem("tattoo_store");
+    var birthmark_get = localStorage.getItem("birthmark_store");
+    var gender_get = localStorage.getItem("gender_store");
+    var skincolor_get = localStorage.getItem("skincolor_store");
+    var placeofdeath_get = localStorage.getItem("placeofdeath_store");
+    var textSearch_get = localStorage.getItem("textSearch_store");
+
+    if(document.getElementById("tattooyes").value==tattoo_get){
+        document.getElementById("tattooyes").checked=true;
+    }
+    else{
+        document.getElementById("tattoono").checked=true;
+    }
+    if(document.getElementById("birthmarkyes").value==birthmark_get){
+        document.getElementById("birthmarkyes").checked=true;
+    }
+    else{
+        document.getElementById("birthmarkno").checked=true;
+    }
+
+    document.getElementById("age").value = age_get;
+    document.getElementById("height").value = height_get;
+    var gender_options = document.getElementById("gender").options
+    for (i=0; i<gender_options.length; i++){
+        if (gender_options[i].value == gender_get){
+            gender_options[i].selected = true;
+        }
+    }
+    var placeofdeath_options = document.getElementById("placeofdeath").options
+    for (i=0; i<placeofdeath_options.length; i++){
+        if (placeofdeath_options[i].value == placeofdeath_get){
+            placeofdeath_options[i].selected = true;
+        }
+    }
+    var skincolor_options = document.getElementById("skincolor").options
+    for (i=0; i<skincolor_options.length; i++){
+        if (skincolor_options[i].value == skincolor_get){
+            skincolor_options[i].selected = true;
+        }
+    }
+    document.getElementById("textSearch").value = textSearch_get;
+</script>
+<div id="footer">
+    <div id="footer-box">
+        <div class="footer-box-box">
+            <b>Banky</b><br><br>
+            <span>Let's connect on</span><br>
+            <span>social media:</span>
+        </div>
+        <div class="footer-box-box">
+            <b>Useful Information</b><br><br>
+            <span>Who we are</span><br>
+            <span>Services</span><br>
+            <span>Help Center</span><br>
+            <span>FAQ</span>
+        </div>
+        <div class="footer-box-box">
+            <b>Navigation</b><br><br>
+            <span>Home</span><br>
+            <span>About</span><br>
+            <span>Features</span><br>
+            <span>Contact Us</span>
+        </div>
+        <div class="footer-box-box">
+            <b>Legal</b><br><br>
+            <span>Terms of Use</span><br>
+            <span>Privacy Policy</span><br>
+            <span>Accessibility</span><br>
+            <span>Security</span>
+        </div>
+    </div>
+
+    <div id="footer-box2">
+        Copyright 2021 All right reseryed
+    </div>
+</div>
+</body>
+
+</html>

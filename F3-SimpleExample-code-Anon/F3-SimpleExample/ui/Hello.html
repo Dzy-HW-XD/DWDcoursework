@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/Hello.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+
+<body>
+    <div id="header">
+        <div id="nav">
+            <img src="images/logo.png" id="nav-img" alt="logo">
+            <div id="nav-ul">
+                <ul>
+                    <li><a href="{{ @BASE }}/Home" style="font-weight: bold;">Hello</a><b></b></li>
+                    <li><a href="{{ @BASE }}/Search">Search</a></li>
+                    <li><a href="{{ @BASE }}/Upload">Upload</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <a id="nav-div" href="{{ @BASE }}/Home#Contact">login</a>
+            <a id="nav-div" href="{{ @BASE }}/Signup">SignUp</a>
+            <!--script>
+                var i = 0;
+                var btn1 = document.getElementById("nav-div");
+                btn1.onclick = function() {
+                    var section = document.getElementById("section");
+                    var section2 = document.getElementById("section2");
+                    if (i % 2 == 0) {
+                        section.style.display = 'none';
+                        section2.style.display = 'block';
+                    } else {
+                        section.style.display = 'block';
+                        section2.style.display = 'none';
+                    }
+                    ++i;
+                };
+            </script-->
+        </div>
+    </div>
+
+    <div id="section">
+        <div id="section-box">
+            <img src="images/12.jpg" id="sectio-box-img1" alt="Background">
+            <div id="section-box-box">
+                <h1 style="margin: 0  0 25px 0;font-size: 50px;">Our detective</h1>
+                <h3 style="margin: 0  0 50px 0;line-height: 28px;color: rgb(214, 223, 230);">could find your<br>friend,lover,relatives... ...</h3>
+                <div id="section-box-box-box">
+                    <img class="box1" width="50px" src="../images/2.png" alt="2">
+                    <div class="box1" id="box1"><b style="color: black;">Location:</b><br>Edinburgh,UK</div>
+                    <img class="box1" width="50px" src="../images/3.png" alt="3">
+                    <div class="box1" id="box1"><b style="color: black;">Date:</b>
+                        <br>
+                        <script type="text/javascript">
+                        var nowDate = new Date();
+                        document.write(nowDate.toLocaleString());
+                    </script></div>
+                    <div class="box1" id="box2"><a href="{{ @BASE }}/Search">Search</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="Cont">
+        <div class="container" id="Contact" style="border-radius: 10px;">
+            <div class="row">
+                <div>
+                    <div>
+                        <h2>Contact Us</h2>
+                        <div class="contact-name">
+                            <h5>Mail</h5>
+                            <p>lukeinedinburgh@gmail.com</p>
+                        </div>
+                        <div class="contact-name">
+                            <h5>Visit My Studio</h5>
+                            <p>Luke Cao,Ziyu Du,Lluoying Bao <br>
+                                townhouse 23, meadow court prime student living, EH9 1NJ</p>
+                        </div>
+                        <div class="contact-name">
+                            <h5>Phone</h5>
+                            <p>+0123456789</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ml-auto wow fadeInUp">
+                    <form method="post" class="resume-form">
+                        <div class="form-group">
+                            <!-- name = Username   -->
+                            <input type="text" name="Username" placeholder="Username" class="form-control contact-name">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="Password" placeholder="Password" class="form-control contact-name">
+                        </div>
+                        <div class="form-group">
+                            <input style="    background: rgb(44, 113, 246);color:#fff" type="submit" name="Submit" value="Login"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--div class="res-slider">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="slider-inner" id="advice_section">
+                            <img src="" alt="" class="img-fluid">
+                            <img src="" alt="" class="img-fluid">
+                            <img src="" alt="" class="img-fluid">
+                            <img src="" alt="" class="img-fluid">
+                            <img src="" alt="" class="img-fluid last_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div-->
+    </section>
+
+
+    <div id="details">
+        <div id="details-box">
+            <h1 style=" color: rgb(6,81,153);margin: 60px 0 20px;">Our features</h1>
+            <div class="details-box-box">
+                <img src="images/4.png" width="100px" alt="4"><br><br>
+                <span>Search</span>
+            </div>
+            <div class="details-box-box">
+                <img src="images/5.png" width="100px" alt="5"><br><br>
+                <span>Login</span>
+            </div>
+            <div class="details-box-box">
+                <img src="images/6.png" width="100px" alt="6"><br><br>
+                <span>Upload</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div id="footer-box">
+            <div class="footer-box-box">
+                <b>Banky</b><br><br>
+                <span>Let's connect on</span><br>
+                <span>social media:</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Useful Information</b><br><br>
+                <span>Who we are</span><br>
+                <span>Services</span><br>
+                <span>Help Center</span><br>
+                <span>FAQ</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Navigation</b><br><br>
+                <span>Home</span><br>
+                <span>About</span><br>
+                <span>Features</span><br>
+                <span>Contact Us</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Legal</b><br><br>
+                <span>Terms of Use</span><br>
+                <span>Privacy Policy</span><br>
+                <span>Accessibility</span><br>
+                <span>Security</span>
+            </div>
+        </div>
+
+        <div id="footer-box2">
+            Copyright 2021 All right reseryed
+        </div>
+    </div>
+</body>
+
+</html>

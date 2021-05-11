@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/Signup.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script>
+        function deny(){
+            alert("Upload function is not open to visitors.Administrator please log in.");
+            window.location.href="{{ @BASE }}/Home#Contact";
+        }
+    </script>
+</head>
+<body>
+<div id="header">
+    <div id="nav">
+        <img src="images/logo.png" id="nav-img" alt="logo">
+        <div id="nav-ul">
+            <ul>
+                <li><a href="{{ @BASE }}/Home" style="font-weight: bold;">Hello</a></li>
+                <li><a href="{{ @BASE }}/Search">Search</a></li>
+                <li><a href="#Contact" onclick="deny()" style="color: #fbff20">Upload</a></li>
+            </ul>
+        </div>
+        <a id="nav-div" href="{{ @BASE }}/Home#Contact">login</a>
+        <!--script>
+            var i = 0;
+            var btn1 = document.getElementById("nav-div");
+            btn1.onclick = function() {
+                var section = document.getElementById("section");
+                var section2 = document.getElementById("section2");
+                if (i % 2 == 0) {
+                    section.style.display = 'none';
+                    section2.style.display = 'block';
+                } else {
+                    section.style.display = 'block';
+                    section2.style.display = 'none';
+                }
+                ++i;
+            };
+        </script-->
+    </div>
+</div>
+
+
+    <div id="section">
+        <div id="register-box">
+        <div id="section-box">
+            <video src="images/7.mp4" id="video-box" style="border-radius: 50px" muted="muted" onMouseOver="this.play()"></video>
+            <div id="login">
+                <div id="login-box">
+                    <img src="images/logo.png" id="login-box-img" alt="logo">
+                    <div style="font-size: 30px"><b>BCD</b></div>
+                </div>
+                <div id="login-box2">
+                    <h1 style="font-weight: bold;">Sign Up</h1><br>
+                    <span>Please Enter your Account and Passwords</span>
+                </div>
+                <form method="post" action="{{ @BASE }}/Signup" class="form">
+                    <div class="itme">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <input type="text" style="outline:none" placeholder="username" name="Username">
+                    </div>
+                    <div class="itme">
+                        <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                        <input style="outline:none" type="password" placeholder="password" name="password1" id="pwd1">
+                    </div>
+                    <div class="itme">
+                        <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                        <input style="outline:none" type="password" placeholder="password confirm" name="password2" id="pwd2">
+                    </div>
+                    <div class="itme">
+                        <input id="checkbox" style="outline:none" type="checkbox" name="checkpolicy"> Privacy Policy.
+                    </div>
+                    <button style="outline:none">Register</button>
+                </form>
+
+                <!--form action="Hello.html" onsubmit="return validate_form(this);" method="post">
+                    Email
+                    <br><input type="text" name="email" size="30">
+                    <br>password
+                    <br><input type="password" name="password" size="16">
+                    <br><button>Sign up</button>
+                </form-->
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div id="footer">
+        <div id="footer-box">
+            <div class="footer-box-box">
+                <b>Banky</b><br><br>
+                <span>Let's connect on</span><br>
+                <span>social media:</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Useful Information</b><br><br>
+                <span>Who we are</span><br>
+                <span>Services</span><br>
+                <span>Help Center</span><br>
+                <span>FAQ</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Navigation</b><br><br>
+                <span>Home</span><br>
+                <span>About</span><br>
+                <span>Features</span><br>
+                <span>Contact Us</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Legal</b><br><br>
+                <span>Terms of Use</span><br>
+                <span>Privacy Policy</span><br>
+                <span>Accessibility</span><br>
+                <span>Security</span>
+            </div>
+        </div>
+
+        <div id="footer-box2">
+            Copyright 2021 All right reseryed
+        </div>
+    </div>
+    <script>
+        var flag = '{{ @flag }}';
+    </script>
+</body>
+</html>

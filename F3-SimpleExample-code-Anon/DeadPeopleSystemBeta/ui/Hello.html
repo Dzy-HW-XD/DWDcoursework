@@ -9,9 +9,55 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/Hello.css">
     <link rel="stylesheet" href="css/footer.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript">
+        function disptime() {
+            var today = new Date();
+            var hh = today.getHours();
+            var mm = today.getMinutes();
+            var ss = today.getSeconds();
+            document.getElementById("myclock").innerHTML = "<h1>" + hh + ":" + mm + ":" + ss + "</h1>"
+        }
+        var mytime = setInterval("disptime()", 1000)
+    </script>
+    <script>
+        function deny() {
+            alert("Upload function is not open to visitors.Administrator please log in.");
+            window.location.href = "{{ @BASE }}/Home#Contact";
+        }
+
+    </script>
+    <script>
+        $(document).ready(function() {
+            var COOKIE_NAME = "showbox";
+            if($.cookie(COOKIE_NAME)) {
+                $(".cookie-banner").hide();
+            } else {
+                $(".cookie-banner").show(1000);
+                $(".close").click(function() {
+                    $(".cookie-banner").hide(1000);
+                    $.cookie(COOKIE_NAME, 'ishide', {
+                        expires: 1
+                    });
+                })
+
+            }
+        });
+    </script>
+
 </head>
 
 <body>
+    <div class="cookie-banner" style="width: 1280px; height: 100px">
+        <p>
+            By using our website, you agree to our cookie policy Including but not limited to the sharing of
+            cookies,session, geographical location information.
+        </p>
+        <button class="close" type="button">Accept</button>
+    </div>
+
+
     <div id="header">
         <div id="nav">
             <img src="images/logo.png" id="nav-img" alt="logo">
@@ -19,12 +65,13 @@
                 <ul>
                     <li><a href="{{ @BASE }}/Home" style="font-weight: bold;">Hello</a><b></b></li>
                     <li><a href="{{ @BASE }}/Search">Search</a></li>
-                    <li><a href="{{ @BASE }}/Upload">Upload</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="{{ @BASE }}/Login" onclick="deny()" style="color: #fbff20">Upload</a></li>
+                    <li><a href="report.pdf"  style="">Report</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/walk%20through%20video%20of%20dynamic%20web%20design/1_m4hocm6d"  style="">VideoIntro</a></li>
                 </ul>
             </div>
-            <a id="nav-div" href="{{ @BASE }}/Home#Contact">login</a>
-            <a id="nav-div" href="{{ @BASE }}/Signup">SignUp</a>
+            <a id="nav-div" class="nav_login" href="{{ @BASE }}/Login"></a>
+            <a id="nav-div" class="nav_sigin" href="{{ @BASE }}/Signup"></a>
             <!--script>
                 var i = 0;
                 var btn1 = document.getElementById("nav-div");
@@ -46,26 +93,34 @@
 
     <div id="section">
         <div id="section-box">
-            <img src="images/12.jpg" id="sectio-box-img1" alt="Background">
+            <img src="images/home.png" id="sectio-box-img1" alt="Background">
             <div id="section-box-box">
-                <h1 style="margin: 0  0 25px 0;font-size: 50px;">Our detective</h1>
-                <h3 style="margin: 0  0 50px 0;line-height: 28px;color: rgb(214, 223, 230);">could find your<br>friend,lover,relatives... ...</h3>
+                <div class="our"></div>
+                <div class="could"> </div>
                 <div id="section-box-box-box">
                     <img class="box1" width="50px" src="images/2.png" alt="2">
-                    <div class="box1" id="box1"><b style="color: black;">Location:</b><br>Edinburgh,UK</div>
+                    <div class="box1" id="box1"><b style="color: black;">Location:</b><br><b>Edinburgh,UK</b></div>
                     <img class="box1" width="50px" src="images/3.png" alt="3">
-                    <div class="box1" id="box1"><b style="color: black;">Date:</b><br>14-03-2022</div>
-                    <div class="box1" id="box2">Search</div>
+                    <div class="box1" id="box1"><b style="color: black;">Date:</b>
+                        <br>
+                        <div id="myclock"></div>
+                    </div>
+                    <div class="box1">
+                        <a href="{{ @BASE }}/Search"><img src="images/search.png" style="width: 140px;
+                                                                                            height: 59px;
+                                                                                            margin: 5px 10px 0;">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section id="Contact">
-        <div class="container">
+    <!--<ection id="Cont">
+        <div class="container" id="Contact" style="border-radius: 10px;">
             <div class="row">
-                <div class="col-md-5">
-                    <div class="contact-details wow fadeInUp">
+                <div>
+                    <div>
                         <h2>Contact Us</h2>
                         <div class="contact-name">
                             <h5>Mail</h5>
@@ -73,8 +128,7 @@
                         </div>
                         <div class="contact-name">
                             <h5>Visit My Studio</h5>
-                            <p>Luke Cao,Ziyu Du,Lluoying Bao <br>
-                                townhouse 23, meadow court prime student living, EH9 1NJ</p>
+                            <p>Luke Cao,Ziyu Du,Lluoying Bao <br> townhouse 23, meadow court prime student living, EH9 1NJ</p>
                         </div>
                         <div class="contact-name">
                             <h5>Phone</h5>
@@ -85,20 +139,20 @@
                 <div class="col-md-6 ml-auto wow fadeInUp">
                     <form method="post" class="resume-form">
                         <div class="form-group">
-                            <!-- name = Username   -->
+
                             <input type="text" name="Username" placeholder="Username" class="form-control contact-name">
                         </div>
                         <div class="form-group">
                             <input type="password" name="Password" placeholder="Password" class="form-control contact-name">
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="Submit" value="Login"/>
+                            <input style="background: rgb(44, 113, 246);color:#fff" type="submit" name="Submit" value="Login" />
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <!--div class="res-slider">
+        <div class="res-slider">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -112,24 +166,24 @@
                     </div>
                 </div>
             </div>
-        </div-->
-    </section>
+        </div>
+    </section>-->
 
 
     <div id="details">
         <div id="details-box">
-            <h1 style=" color: rgb(6,81,153);margin: 60px 0 20px;">Our features</h1>
+            <h1 style=" bottom: 80px;">WHAT YOU CAN DO</h1>
             <div class="details-box-box">
                 <img src="images/4.png" width="100px" alt="4"><br><br>
-                <span>Enter your email and password to login our dashboard</span>
+                <h2 style=""><b>Search</b></h2>
             </div>
             <div class="details-box-box">
                 <img src="images/5.png" width="100px" alt="5"><br><br>
-                <span>Enter your email and password to login our dashboard</span>
+                <h2 style=""><b>Login</b></h2>
             </div>
             <div class="details-box-box">
                 <img src="images/6.png" width="100px" alt="6"><br><br>
-                <span>Enter your email and password to login our dashboard</span>
+                <h2 style=""><b>Upload</b></h2>
             </div>
         </div>
     </div>
@@ -165,7 +219,7 @@
         </div>
 
         <div id="footer-box2">
-            Copyright 2021 All right reseryed
+            Copyright 2021 All right
         </div>
     </div>
 </body>

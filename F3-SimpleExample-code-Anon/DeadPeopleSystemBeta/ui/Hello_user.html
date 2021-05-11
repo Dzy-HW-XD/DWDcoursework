@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/Hello.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script type="text/javascript">
+        function disptime() {
+            var today = new Date();
+            var hh = today.getHours();
+            var mm = today.getMinutes();
+            var ss = today.getSeconds();
+            document.getElementById("myclock").innerHTML = "<h1>" + hh + ":" + mm + ":" + ss + "</h1>"
+
+        }
+        var mytime = setInterval("disptime()", 1000);
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <div id="nav">
+            <img src="images/logo.png" id="nav-img" alt="logo">
+            <div id="nav-ul">
+                <ul>
+                    <li><a href="{{ @BASE }}/UserWelcome" style="font-weight: bold;">Hello</a><b></b></li>
+                    <li><a href="{{ @BASE }}/UserSearch">Search</a></li>
+                    <li><a href="{{ @BASE }}/Upload" style="color: #00ffd2">Upload</a></li>
+                </ul>
+            </div>
+
+            <a id="nav-div" class="nav_sigin_out" href="{{ @BASE }}/Home"></a>
+            <div style="font-size: 20px;color: #fff;
+                            letter-spacing: 1px;
+                            position: relative;
+                            top: 12px;
+                            float: right;
+                            ">&#160;Administrator <b>{{ @SESSION.userName }}</b>,Welcome</div>
+
+
+            <!--script>
+            var i = 0;
+            var btn1 = document.getElementById("nav-div");
+            btn1.onclick = function() {
+                var section = document.getElementById("section");
+                var section2 = document.getElementById("section2");
+                if (i % 2 == 0) {
+                    section.style.display = 'none';
+                    section2.style.display = 'block';
+                } else {
+                    section.style.display = 'block';
+                    section2.style.display = 'none';
+                }
+                ++i;
+            };
+        </script-->
+        </div>
+    </div>
+
+    <div id="section">
+        <div id="section-box">
+            <img src="images/home.png" id="sectio-box-img1" alt="Background">
+
+            <div id="section-box-box">
+                <div class="our"></div>
+                <div class="could"> </div>
+                <div id="section-box-box-box">
+                    <img class="box1" width="50px" src="images/2.png" alt="2">
+                    <div class="box1" id="box1"><b style="color: black;">Location:</b><br>Edinburgh,UK</div>
+                    <img class="box1" width="50px" src="images/3.png" alt="3">
+                    <div class="box1" id="box1"><b style="color: black;">Date:</b>
+                        <br>
+                        <div id="myclock"></div>
+                    </div>
+                    <div class="box1">
+                        <a href="{{ @BASE }}/Search"><img src="images/search.png" style="width: 140px;
+                                                                                            height: 59px;
+                                                                                            margin: 5px 10px 0;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="details">
+        <div id="details-box">
+            <h1 style=" bottom: 80px;">WHAT YOU CAN DO</h1>
+            <div class="details-box-box">
+                <img src="images/4.png" width="100px" alt="4"><br><br>
+                <h2 style=""><b>Search</b></h2>
+            </div>
+            <div class="details-box-box">
+                <img src="images/5.png" width="100px" alt="5"><br><br>
+                <h2 style=""><b>Login</b></h2>
+            </div>
+            <div class="details-box-box">
+                <img src="images/6.png" width="100px" alt="6"><br><br>
+                <h2 style=""><b>Upload</b></h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div id="footer-box">
+            <div class="footer-box-box">
+                <b>Banky</b><br><br>
+                <span>Let's connect on</span><br>
+                <span>social media:</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Useful Information</b><br><br>
+                <span>Who we are</span><br>
+                <span>Services</span><br>
+                <span>Help Center</span><br>
+                <span>FAQ</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Navigation</b><br><br>
+                <span>Home</span><br>
+                <span>About</span><br>
+                <span>Features</span><br>
+                <span>Contact Us</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Legal</b><br><br>
+                <span>Terms of Use</span><br>
+                <span>Privacy Policy</span><br>
+                <span>Accessibility</span><br>
+                <span>Security</span>
+            </div>
+        </div>
+
+        <div id="footer-box2">
+            Copyright 2021 All right reseryed
+        </div>
+    </div>
+</body>
+
+</html>

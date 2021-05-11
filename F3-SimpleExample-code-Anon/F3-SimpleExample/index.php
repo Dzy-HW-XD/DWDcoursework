@@ -28,20 +28,133 @@ $f3->set('UI','ui/');		// folder for View templates
 $f3->route('GET /',
   function ($f3) {
     $f3->set('html_title','Simple Example Home');
-    $f3->set('content','simpleHome.html');
+    $f3->set('content','Hello.html');
     echo Template::instance()->render('layout.html');
   }
 );
 
-// When using GET, provide a form for the user to upload an image via the file input type
-$f3->route('GET /simpleform',
-  function($f3) {
-    $f3->set('html_title','Simple Input Form');
-    $f3->set('content','simpleform.html');
-    echo template::instance()->render('layout.html');
-  }
+$f3->route('GET /Home',
+    function ($f3) {
+        $f3->set('html_title','Simple Example Home');
+        $f3->set('content','Hello.html');
+        echo Template::instance()->render('layout.html');
+    }
 );
 
+
+$f3->route('POST /Home',
+    function($f3) {
+        $controller = new SimpleController;
+        if ($controller->loginUser($f3->get('POST.Username'), $f3->get('POST.Password'))) {	// user is recognised
+            $f3->set('SESSION.userName', $f3->get('POST.Username'));
+            // note that this is a global that will be available elsewhere
+            header("location:/fatfree/DeadPeopleSystemBeta/Upload");
+            // will always go to index-user after successful login
+        }
+        else{
+            header("location:/fatfree/DeadPeopleSystemBeta/Home");
+            echo "<script type='text/javascript'>alert('ERROR password or username')</script>";
+            // return to login page with the message that there was an error in the credentials
+        }
+    }
+);
+// When using GET, provide a form for the user to upload an image via the file input type
+$f3->route('GET /Search',
+    function($f3) {
+        $f3->set('html_title','Search Page');
+        $f3->set('content','Search.html');
+        $controller = new SimpleController;
+        $list = $controller->getData();
+
+        $f3->set('result',$list);
+        $f3->set('length',sizeof($list));
+        echo template::instance()->render('layout.html');
+    }
+);
+
+$f3->route('POST /Search',
+    function($f3) {
+
+        $json_array= array("tattoo"=>$f3->get('POST.tattoo'),
+                            "birthmark"=>$f3->get('POST.birthmark'),
+                            "age"=>(int)$f3->get('POST.age'),
+                            "height"=>(int)$f3->get('POST.height'),
+                            "gender"=>$f3->get('POST.gender'),
+                            "skincolor"=>$f3->get('POST.skincolor'),
+                            "placeofdeath"=>$f3->get('POST.placeofdeath'));
+        json_encode($json_array);
+
+
+        if(!empty($_POST['Search_filiter'])){
+            $formdata = array();            // array to pass on the entered data in
+            $formdata["age"] = $f3->get('POST.age');            // whatever was called "age" on the form
+            $formdata['gender'] = $f3->get('POST.gender');              // whatever was called "gender" on the form
+            $formdata['height'] = $f3->get('POST.height');        // whatever was called "height" on the form
+            $formdata['tattoo'] = $f3->get('POST.tattoo');        // whatever was called "tattoos" on the form
+            $formdata['birthmark'] = $f3->get('POST.birthmark');    // whatever was called "birthmark" on the form
+            $formdata['timeofdeath'] = $f3->get('POST.timeofdeath');// whatever was called "timeofdeadth" on the form
+            $formdata['skincolor'] = $f3->get('POST.skincolor');// whatever was called "timeofdeadth" on the form
+            $formdata['placeofdeath'] = $f3->get('POST.placeofdeath');// whatever was called "timeofdeadth" on the form
+            if ($formdata["tattoo"] == 1) {
+                $tattoo = "yes";
+            } else {
+                $tattoo = "no";
+            }
+
+            if ($formdata["birthmark"] == 1) {
+                $birthmark = "yes";
+            } else {
+                $birthmark = "no";
+            }
+            $age = (int)$formdata["age"];
+            $sex = $formdata["gender"];
+            $height = (int)$formdata["height"];
+
+            $timeofdeath = $formdata['timeofdeath'];
+            $skincolor = $formdata['skincolor'];
+            $placeofdeath = $formdata['placeofdeath'];
+            $list = $f3->get('DB')->exec("SELECT * FROM deadinfo WHERE (age < '$age') AND (sex = '$sex') 
+                                                                        AND (height < $height)  AND (tattoos='$tattoo') 
+                                                                        AND (birthmark='$birthmark') AND (skincolor='$skincolor') 
+                                                                        AND (placeofdeath = '$placeofdeath')");
+            //
+            $f3->set('result', $list); //set $list into variable 'result'
+            $f3->set('length', sizeof($list)); //set $list into variable 'result'
+            //print_r(gettype($age));
+            //print_r($tattoo);
+            //print_r($birthmark);
+            //print_r($list);
+            //print_r($sex);
+            //print_r($skincolor);
+            //print_r($placeofdeath);
+
+            echo template::instance()->render('Search.html'); //return to search.html page
+            //$list = $f3->get('DB')->exec("SELECT * FROM deadinfo WHERE (age BETWEEN'$agelow'and'$agehigh') AND (sex='$s') AND (height BETWEEN'$heightlow'and'$heighthigh')  AND (tattoos='$t') AND (birthmark='$b') AND (timeofdeadth='$tofdeadth')");
+
+    }
+    elseif(!empty($_POST['Search_text'])){
+            print_r($f3->get('POST.textSearch'));
+            $formdata = array();            // array to pass on the entered data in
+            $formdata["textSearch"] = $f3->get('POST.textSearch');            // whatever was called "age" on the form
+            $t = $formdata["textSearch"];
+            $list = $f3->get('DB')->exec("SELECT * FROM deadinfo  WHERE (name LIKE '$t') 
+                               OR (causeofdeath LIKE '$t') 
+                               OR (otherinformation LIKE '$t') 
+                               OR (skincolor LIKE '$t')");
+            $f3->set('result', $list); //set $list into variable 'result'
+            $f3->set('length', sizeof($list)); //set $list into variable 'result'
+            //print_r(gettype($age));
+            //print_r($tattoo);
+            //print_r($birthmark);
+            //print_r($list);
+            //print_r($sex);
+            //print_r($skincolor);
+            //print_r($placeofdeath);
+
+            echo template::instance()->render('Search.html'); //return to search.html page
+    }
+    }
+);
 // When using POST (e.g.  form is submitted), invoke the controller, which will process
 // any data then return info we want to display. We display
 // the info here via the response.html template
@@ -64,38 +177,84 @@ $f3->route('POST /simpleform',
   }
 );
 
-$f3->route('GET /dataView',
+$f3->route('GET /Upload',
   function($f3) {
-  	$controller = new SimpleController;
-    $alldata = $controller->getData();
-    
-    $f3->set("dbData", $alldata);
-    $f3->set('html_title','Viewing the data');
-    $f3->set('content','dataView.html');
+    $f3->set('html_title','Upload Page');
+    $f3->set('content','Upload.html');
     echo template::instance()->render('layout.html');
   }
 );
+$f3->route('POST /Upload',
+    function($f3) {
+        $formdata = array();
+        $formdata["name"] = $f3->get('POST.name');
+        $formdata["skincolor"] = $f3->get('POST.skincolor');
+        $formdata["age"] = $f3->get('POST.age');
+        $formdata["skincolor"] = $f3->get('POST.skincolor');
+        $formdata["timeOfdeath"] = $f3->get('POST.timeOfdeath');
+        $formdata["placeOfdeath"] = $f3->get('POST.placeOfdeath');
+        $formdata["causeOfdeath"] = $f3->get('POST.causeOfdeath');
+        $formdata["tattoo"] = $f3->get('POST.tattoo');
+        $formdata["birthmark"] = $f3->get('POST.birthmark');
+        $formdata["authority"] = $f3->get('POST.authority');
+        $formdata["contactnumber"] = $f3->get('POST.contactnumber');
+        $formdata["gender"] = $f3->get('POST.gender');
+        $formdata["otherinformation"] = $f3->get('POST.otherinformation');
 
-$f3->route('GET /editView',				// exactly the same as dataView, apart from the template used
-  function($f3) {
-  	$controller = new SimpleController;
-    $alldata = $controller->getData();
-    
-    $f3->set("dbData", $alldata);
-    $f3->set('html_title','Viewing the data');
-    $f3->set('content','editView.html');
-    echo template::instance()->render('layout.html');
-  }
+        $controller = new SimpleController;
+        $controller->putIntoinfoDatabase($formdata);
+
+        $is = new ImageServer;
+        if ($filedata = $is->upload()) {						// if this is null, upload failed
+            $f3->set('filedata', $filedata);
+            echo '<script type="text/javascript">alert("Upload Successfully.")</script>';
+            echo template::instance()->render('Hello.html');
+        }
+        $f3->set('formData',$formdata);
+
+
+    }
 );
 
-$f3->route('POST /editView',		// this is used when the form is submitted, i.e. method is POST
-  function($f3) {
-  	$controller = new SimpleController;
-    $controller->deleteFromDatabase($f3->get('POST.toDelete'));		// in this case, delete selected data record
-
-	$f3->reroute('/editView');  }		// will show edited data (GET route)
+$f3->route('GET /Signup',
+    function($f3) {
+        $f3->set('html_title','Upload Page');
+        $f3->set('content','Signup.html');
+        echo template::instance()->render('layout.html');
+    }
 );
+$f3->route('POST /Signup',
+    function($f3) {
+        if($f3->get('POST.checkpolicy')){ // Check whether checkpolicy is true
+            if($f3->get('POST.password1')==$f3->get('POST.password2')){//Check whether pd1 and pd2 are same
+                //if checkpolicy is true and pd1,pd2 are same
+                //then insert Username and password into database
+                $formdata = array();			                    // array to pass on the entered data in
+                $formdata["username"] = $f3->get('POST.Username');	// whatever was called "Username" on the form
+                $formdata["password"] = $f3->get('POST.password1');// whatever was called "password1" on the for
 
+                $controller = new SimpleController;
+
+                $controller->putIntoAdmDatabase($formdata);//insert formadate into database
+
+                $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
+                $f3->set('flag','success');		// set info in F3 variable for access in response template
+                echo template::instance()->render('Hello.html');
+            }
+            //if password1 and password2 are different, then alert and refresh page
+            else{
+                $f3->set('flag','errorpass');		// set info in F3 variable for access in response template
+                echo template::instance()->render('Hello.html');
+            }
+        }
+        //if checkpolicy is False, then alert and refresh page
+        else {
+            $f3->set('flag','policy');		// set info in F3 variable for access in response template
+            echo '<script type="text/javascript">alert("Please check Service and Privacy Policy.")</script>';
+            echo template::instance()->render('Hello.html');
+        }
+    }
+);
 
   ////////////////////////
  // Run the F3 engine //

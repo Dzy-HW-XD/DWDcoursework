@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/Hello.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+    <div id="header">
+        <div id="nav">
+            <img src="images/logo.png" id="nav-img" alt="logo">
+            <div id="nav-ul">
+                <ul>
+                    <li><a href="{{ @BASE }}/Home" style="font-weight: bold;">Hello</a><b></b></li>
+                    <li><a href="{{ @BASE }}/Search">Search</a></li>
+                    <li><a href="{{ @BASE }}/Upload">Upload</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <a id="nav-div" href="{{ @BASE }}/Home#Contact">login</a>
+            </div>
+    </div>
+    <div>
+        <div class="video-list">
+            <div class="video">
+            <video src="images/7.mp4"  muted></video>
+        </div>
+            <div id="login">
+                <div id="login-box">
+                    <img src="../images/logo.png" id="login-box-img" alt="logo">
+                    <span>BCD</span>
+                </div>
+                <div id="login-box2">
+                    <h1 style="font-weight: bold;">Sign Up</h1><br>
+                    <span>Please Enter your Account and Passwords</span>
+                </div>
+                <form method="post" action="{{ @BASE }}/Signup" class="form">
+                    <div class="itme">
+                        <i aria-hidden="true"></i>
+                        <input type="text" style="outline:none" placeholder="username" name="Username">
+                    </div>
+                    <div class="itme">
+                        <i aria-hidden="true"></i>
+                        <input style="outline:none" type="password" placeholder="password" name="password1" id="pwd1">
+                    </div>
+                    <div class="itme">
+                        <i aria-hidden="true"></i>
+                        <input style="outline:none" type="password" placeholder="password confirm" name="password2" id="pwd2">
+                    </div>
+                    <div class="chekbox">
+                        <input style="outline:none" type="checkbox" name="checkpolicy"> 
+                        <span>Privacy Policy.</span>
+                    </div>
+                    <button style="outline:none">Sign Up</button>
+                </form>
+
+                <!--form action="Hello.html" onsubmit="return validate_form(this);" method="post">
+                    Email
+                    <br><input type="text" name="email" size="30">
+                    <br>password
+                    <br><input type="password" name="password" size="16">
+                    <br><button>Sign up</button>
+                </form-->
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer-box">
+            <div class="footer-box-box">
+                <b>Banky</b><br><br>
+                <span>Let's connect on</span><br>
+                <span>social media:</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Useful Information</b><br><br>
+                <span>Who we are</span><br>
+                <span>Services</span><br>
+                <span>Help Center</span><br>
+                <span>FAQ</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Navigation</b><br><br>
+                <span>Home</span><br>
+                <span>About</span><br>
+                <span>Features</span><br>
+                <span>Contact Us</span>
+            </div>
+            <div class="footer-box-box">
+                <b>Legal</b><br><br>
+                <span>Terms of Use</span><br>
+                <span>Privacy Policy</span><br>
+                <span>Accessibility</span><br>
+                <span>Security</span>
+            </div>
+        </div>
+
+        <div id="footer-box2">
+            Copyright 2021 All right reseryed
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+    <script>
+        var flag = '{{ @flag }}';
+        $(document).ready(function () {
+    $(".video").hover(function () {
+        $(this).children("video")[0].play();
+    }, function () {
+        var el = $(this).children("video")[0];
+        el.pause();
+        el.currentTime = 0;
+    });
+});
+    </script>
+</body>
+</html>

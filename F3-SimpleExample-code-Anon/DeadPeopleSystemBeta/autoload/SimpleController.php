@@ -38,6 +38,7 @@ class SimpleController {
 		$this->deadinfo->authority = $data["authority"];
 		$this->deadinfo->contactnumber = $data["contactnumber"];
 		$this->deadinfo->otherinformation = $data["otherinformation"];
+		//$this->deadinfo->pictitle = $data["pictitle"];
 		$this->deadinfo->save();									// save new record with these fields
 	}
 
@@ -52,7 +53,7 @@ class SimpleController {
 	}
 
 	public function getData() {
-		$list = $this->mapper->find();
+		$list = $this->deadinfo->find();
 		return $list;
 	}
 	

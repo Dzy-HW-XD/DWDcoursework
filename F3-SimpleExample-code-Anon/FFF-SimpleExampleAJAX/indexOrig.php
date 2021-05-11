@@ -8,7 +8,7 @@
 // These are available to the routing code below, but also to any 
 // classes defined in autoloaded definitions
 
-$f3 = require('/Users/jlee/AboveWebRoot/fatfree-master-3.7/lib/base.php');
+$f3 = require('/Users/jlee/AboveWebRoot/fatfree-master/lib/base.php');
 
 // autoload Controller class(es) and anything hidden above web root, e.g. DB stuff
 $f3->set('AUTOLOAD','autoload/;/Users/jlee/AboveWebRoot/autoload/');		

@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'abcd';
+    src: url('../font/cgt.TTF');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+body {
+    width: 100%;
+    margin: auto;
+    font-family: abc;
+}
+
+#header {
+    width: 100%;
+    height: 82px;
+    margin: auto;
+    /* background: rgb(0, 63, 131); */
+    background: rgb(0, 82, 160);
+}
+
+#nav {
+    
+    height: 52px;
+    margin: auto;
+    position: relative;
+    top: 18px;
+    letter-spacing: 1px;
+    padding:0 20px;
+}
+
+#nav-img {
+    width: 30px;
+    float: left;
+    position: relative;
+    top: 15px;
+}
+
+#nav-ul {
+    width: 500px;
+    height: 52px;
+    float: left;
+    position: relative;
+    left: 30px;
+}
+
+#nav-ul ul li {
+    list-style: none;
+    width: 100px;
+    line-height: 52px;
+    float: left;
+    margin: 0 10px 0;
+}
+
+#nav-ul ul li a {
+    display: block;
+    width: 100px;
+    height: 52px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+}
+
+#nav-ul ul li b {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background: rgb(228, 186, 93);
+    margin: auto;
+    border-radius: 100%;
+    position: relative;
+    top: -10px;
+}
+
+#nav-div {
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background: rgb(44, 113, 246);
+    float: right;
+    margin: 6px 0 0 0;
+    border-radius: 10px;
+    margin-left:20px;
+}
